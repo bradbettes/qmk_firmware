@@ -52,7 +52,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 |         |         |         |         |         |         |         |         |         |         |         |         |
 |---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------|
 |         |         |         |         |         |                   |         |         |         |         |         |
-|    FN   |  CTRL ( | ) ALT   |   WIN   |  VOL D  |      SPACE_FN     |  VOL U  |   LEFT  |    DN   |   UP    |  RIGHT  |
+|  CTRL ( |    FN   |   WIN   | ) ALT   |  VOL D  |      SPACE_FN     |  VOL U  |   LEFT  |    DN   |   UP    |  RIGHT  |
 |         |         |         |         |         |                   |         |         |         |         |         |
  ---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+--------- 
 */
@@ -60,7 +60,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   KC_TAB,    KC_Q,     KC_W,     KC_E,     KC_R,     KC_T,     KC_Y,     KC_U,     KC_I,     KC_O,     KC_P,    KC_BSPC,
   KC_DEL,    KC_A,     KC_S,     KC_D,     KC_F,     KC_G,     KC_H,     KC_J,     KC_K,     KC_L,    KC_SCLN,  KC_QUOT,
   SFT_CPS,   KC_Z,     KC_X,     KC_C,     KC_V,     KC_B,     KC_N,     KC_M,    KC_COMM,  KC_DOT,   KC_SLSH,  SHF_ENT,
-    FN,     SC_LCPO,  SC_RAPC,  KC_LGUI,  KC_VOLD,      SPACE_FN,       KC_VOLU,  KC_LEFT,  KC_DOWN,   KC_UP,   KC_RGHT
+  SC_LCPO,    FN,     KC_LGUI,  SC_RAPC,  KC_VOLD,      SPACE_FN,       KC_VOLU,  KC_LEFT,  KC_DOWN,   KC_UP,   KC_RGHT
  ),
 
 /* 
@@ -79,7 +79,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 |         |         |         |         |         |         |         |         |         |         |         |         |
 |---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------|
 |         |         |         |         |         |                   |         |         |         |         |         |
-|    FN   |  CTRL ( | ) ALT   |   WIN   |  VOL D  |  SPACE  SPACE_FN  |  VOL U  |   HOME  |  PG DN  |  PG UP  |  END    |
+|  CTRL ( |    FN   |   WIN   | ) ALT   |  VOL D  |  SPACE  SPACE_FN  |  VOL U  |   HOME  |  PG DN  |  PG UP  |  END    |
 |         |         |         |         |         |                   |         |         |         |         |         |
  ---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------
 */
@@ -106,7 +106,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 |         |         |         |         |         |         |         |         |         |         |         |         |
 |---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------|
 |         |         |         |         |         |                   |         |         |         |         |         |
-|    FN   |         |         |         |  VOL D  |       SPACE       |  VOL U  |  MS LT  |  MS DN  |  MS UP  |  MS RT  |
+|         |    FN   |         |         |  VOL D  |       SPACE       |  VOL U  |  MS LT  |  MS DN  |  MS UP  |  MS RT  |
 |         |         |         |         |         |                   |         |         |         |         |         |
  ---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------
 */
@@ -114,7 +114,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   QK_BOOT,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  KC_SLEP, 
   DB_TOGG,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  KC_WAKE, 
   XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  MS_BTN1,  MS_WHLD,  MS_WHLU,  MS_BTN2, 
-  _______,  XXXXXXX,  XXXXXXX,  XXXXXXX,  _______,        KC_SPC,       _______,  MS_LEFT,  MS_DOWN,   MS_UP,   MS_RGHT
+  XXXXXXX,  _______,  XXXXXXX,  XXXXXXX,  _______,        KC_SPC,       _______,  MS_LEFT,  MS_DOWN,   MS_UP,   MS_RGHT
  )
 
 };
