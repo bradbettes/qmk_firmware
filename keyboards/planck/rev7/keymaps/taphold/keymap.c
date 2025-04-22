@@ -26,6 +26,11 @@ enum planck_layers {
 #define SFT_CPS (LSFT_T(KC_CAPS))
 #define SHF_ENT (LSFT_T(KC_ENT))
 #define FN MO(_FN)
+#define CNTL_X LT(0,KC_X)
+#define CNTL_C LT(0,KC_C)
+#define CNTL_V LT(0,KC_V)
+#define CNTL_A LT(0,KC_A)
+#define CNTL_S LT(0,KC_S)
 
 const key_override_t delete_escape = ko_make_basic(MOD_MASK_SHIFT, KC_DEL, KC_ESC);
 
@@ -33,6 +38,59 @@ const key_override_t delete_escape = ko_make_basic(MOD_MASK_SHIFT, KC_DEL, KC_ES
 const key_override_t *key_overrides[] = {
    &delete_escape
 };
+
+uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
+    switch (keycode) {
+        case CNTL_X:
+            return TAPPING_TERM + 300;
+        case CNTL_C:
+            return TAPPING_TERM + 300;
+        case CNTL_V:
+            return TAPPING_TERM + 300;
+        case CNTL_A:
+            return TAPPING_TERM + 300;
+        case CNTL_S:
+            return TAPPING_TERM + 300;
+        default:
+            return TAPPING_TERM;
+    }
+}
+
+bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+   switch (keycode) {
+       case LT(0,KC_X):
+           if (!record->tap.count && record->event.pressed) {
+               tap_code16(C(KC_X)); // Intercept hold function to send Ctrl-X
+               return false;
+           }
+           return true;             // Return true for normal processing of tap keycode
+       case LT(0,KC_C):
+           if (!record->tap.count && record->event.pressed) {
+               tap_code16(C(KC_C)); // Intercept hold function to send Ctrl-C
+               return false;
+           }
+           return true;             // Return true for normal processing of tap keycode
+       case LT(0,KC_V):
+           if (!record->tap.count && record->event.pressed) {
+               tap_code16(C(KC_V)); // Intercept hold function to send Ctrl-V
+               return false;
+           }
+           return true;             // Return true for normal processing of tap keycode
+       case LT(0,KC_A):
+           if (!record->tap.count && record->event.pressed) {
+               tap_code16(C(KC_A)); // Intercept hold function to send Ctrl-A
+               return false;
+           }
+           return true;             // Return true for normal processing of tap keycode
+       case LT(0,KC_S):
+           if (!record->tap.count && record->event.pressed) {
+               tap_code16(C(KC_S)); // Intercept hold function to send Ctrl-S
+               return false;
+           }
+           return true;             // Return true for normal processing of tap keycode
+   }
+   return true;
+}
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
@@ -58,8 +116,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 */
  [_QWERTY] = LAYOUT_planck_mit(
   KC_DEL,    KC_Q,     KC_W,     KC_E,     KC_R,     KC_T,     KC_Y,     KC_U,     KC_I,     KC_O,     KC_P,    KC_BSPC,
-  KC_TAB,    KC_A,     KC_S,     KC_D,     KC_F,     KC_G,     KC_H,     KC_J,     KC_K,     KC_L,    KC_SCLN,  KC_QUOT,
-  SFT_CPS,   KC_Z,     KC_X,     KC_C,     KC_V,     KC_B,     KC_N,     KC_M,    KC_COMM,  KC_DOT,   KC_SLSH,  SHF_ENT,
+  KC_TAB,   CNTL_A,   CNTL_S,    KC_D,     KC_F,     KC_G,     KC_H,     KC_J,     KC_K,     KC_L,    KC_SCLN,  KC_QUOT,
+  SFT_CPS,   KC_Z,    CNTL_X,   CNTL_C,   CNTL_V,    KC_B,     KC_N,     KC_M,    KC_COMM,  KC_DOT,   KC_SLSH,  SHF_ENT,
   SC_LCPO,    FN,     KC_LGUI,  SC_RAPC,  KC_VOLD,      SPACE_FN,       KC_VOLU,  KC_LEFT,  KC_DOWN,   KC_UP,   KC_RGHT
  ),
 
