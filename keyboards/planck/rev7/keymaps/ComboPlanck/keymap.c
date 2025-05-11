@@ -25,16 +25,17 @@ enum planck_layers {
 #define SPACE_FN LT(_SPACE_FN, KC_SPC)
 #define FN MO(_FN)
 
-#define ST_QT (SFT_T(KC_QUOT))
-#define ST_DEL (SFT_T(KC_DEL))
+#define ST_CAPS (SFT_T(KC_CAPS))
+#define ST_ENT (SFT_T(KC_ENT))
 
 #define WIN_MIN (WIN_T(KC_MINS))
 
 #define ALT_EQL (ALT_T(KC_EQL))
 
 #define CTL_ESC (CTL_T(KC_ESC))
-#define CTL_ENT (CTL_T(KC_ENT))
+#define CTL_DEL (CTL_T(KC_DEL))
 #define CTL_GRV (CTL_T(KC_GRV))
+#define CTL_QT (CTL_T(KC_QUOT))
 
 #define CNTL_X LT(0,KC_X)
 #define CNTL_C LT(0,KC_C)
@@ -104,9 +105,19 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
    return true;
 }
 
+/*
+// Defines modified shifted state of Up button to ?
+const key_override_t shift_up_question = ko_make_basic(MOD_MASK_SHIFT, KC_UP, KC_QUES);
+
+// This globally defines all key overrides to be used
+const key_override_t *key_overrides[] = {
+	&shift_up_question
+};
+*/
+
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
-/* 
+/*
  ======================================================= QWERTY ========================================================
  ---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------
 |         |         |         |         |         |         |         |         |         |         |         |         |
@@ -114,26 +125,26 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 |         |         |         |         |         |         |         |         |         |         |         |         |
 |---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------|
 |         |         |         |         |         |         |         |         |         |         |         |         |
-|   ESC   |    A    |    S    |    D    |    F    |    G    |    H    |    J    |    K    |    L    |    ;    |  ENTER  |
+|   ESC   |    A    |    S    |    D    |    F    |    G    |    H    |    J    |    K    |    L    |    ;    |   DEL   |
 |   CNTL  |         |         |         |         |         |         |         |         |         |         |   CNTL  |
 |---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------|
 |         |         |         |         |         |         |         |         |         |         |         |         |
-|    '    |    Z    |    X    |    C    |    V    |    B    |    N    |    M    |    ,    |    .    |    /    |   DEL   |
+|   CAPS  |    Z    |    X    |    C    |    V    |    B    |    N    |    M    |    ,    |    .    |   UP    |  ENTER  |
 |  SHIFT  |         |         |         |         |         |         |         |         |         |         |  SHIFT  |
 |---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------|
-|         |         |         |         |         |                   |         |         |         |         |         |
-|  VOL DN | VOL UP  |         |   FN    |    -    |      SPACE_FN     |    =    |   LEFT  |    DN   |   UP    |  RIGHT  |
-|         |         |         |         |   GUI   |                   |   ALT   |         |         |         |         |
- ---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+--------- 
+| VOL U/D |   RWD   |    FF   |         |         |                   |         |         |         |         |         |
+| ENCODER |  VOL DN | VOL UP  |   ALT   |    -    |      SPACE_FN     |    =    |   GUI   |   LEFT  |   DN    |  RIGHT  |
+|    FN   | KC_MRWD | KC_MFFD |         |         |                   |         |         |         |         |         |
+ ---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------
 */
  [_QWERTY] = LAYOUT_planck_mit(
   KC_TAB,    KC_Q,     KC_W,     KC_E,     KC_R,     KC_T,     KC_Y,     KC_U,     KC_I,     KC_O,     KC_P,    KC_BSPC,
-  CTL_ESC,  CNTL_A,   CNTL_S,    KC_D,     KC_F,     KC_G,     KC_H,     KC_J,     KC_K,     KC_L,    KC_SCLN,  CTL_ENT,
-   ST_QT,   CNTL_Z,   CNTL_X,   CNTL_C,   CNTL_V,    KC_B,     KC_N,     KC_M,    KC_COMM,  KC_DOT,   KC_SLSH,  ST_DEL,
-  KC_VOLD,  KC_VOLU,  _______,    FN,     WIN_MIN,      SPACE_FN,       ALT_EQL,  KC_LEFT,  KC_DOWN,   KC_UP,   KC_RGHT
+  CTL_ESC,  CNTL_A,   CNTL_S,    KC_D,     KC_F,     KC_G,     KC_H,     KC_J,     KC_K,     KC_L,    KC_SCLN,  CTL_DEL,
+  ST_CAPS,  CNTL_Z,   CNTL_X,   CNTL_C,   CNTL_V,    KC_B,     KC_N,     KC_M,    KC_COMM,  KC_DOT,    KC_UP,   ST_ENT,
+    FN,     KC_VOLD,  KC_VOLU,  KC_LALT,  KC_MINS,      SPACE_FN,       KC_EQL,   KC_LGUI,  KC_LEFT,  KC_DOWN,  KC_RGHT
  ),
 
-/* 
+/*
  ====================================================== SPACE_FN =======================================================
  ---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------
 |         |         |         |         |         |         |         |         |         |         |         |         |
@@ -141,50 +152,50 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 |         |         |         |         |         |         |         |         |         |         |         |         |
 |---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------|
 |         |         |         |         |         |         |         |         |         |         |         |         |
-|    `    |    1    |    2    |    3    |    4    |    5    |    6    |    7    |    8    |    9    |    0    |  ENTER  |
+|    `    |    1    |    2    |    3    |    4    |    5    |    6    |    7    |    8    |    9    |    0    |    '    |
 |  CNTL   |         |         |         |         |         |         |         |         |         |         |   CNTL  |
 |---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------|
 |         |         |         |         |         |         |         |         |         |         |         |         |
-|    '    |         |         |         |         |    [    |    ]    |    \    |    ,    |    .    |    /    |   DEL   |
+|   CAPS  |         |         |         |    \    |    [    |    ]    |    /    |    ,    |    .    |  PG UP  |  ENTER  |
 |  SHIFT  |         |         |         |         |         |         |         |         |         |         |  SHIFT  |
 |---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------|
 |         |         |         |         |         |                   |         |         |         |         |         |
-|         |         |         |         |    -    |     SPACE_FN      |    =    |   HOME  |  PG DN  |  PG UP  |  END    |
-|         |         |         |         |   GUI   |                   |   ALT   |         |         |         |         |
+|         |         |         |   ALT   |    -    |      SPACE_FN     |    =    |   GUI   |   HOME  |  PG DN  |  END    |
+|         |         |         |         |         |                   |         |         |         |         |         |
  ---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------
 */
  [_SPACE_FN] = LAYOUT_planck_mit(
   KC_INS,    KC_F1,    KC_F2,    KC_F3,    KC_F4,    KC_F5,    KC_F6,    KC_F7,    KC_F8,    KC_F9,    KC_F10,  _______,
-  CTL_GRV,   KC_1,     KC_2,     KC_3,     KC_4,     KC_5,     KC_6,     KC_7,     KC_8,     KC_9,     KC_0,    _______, 
-  _______,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  KC_LBRC,  KC_RBRC,  KC_BSLS,  _______,  _______,  _______,  _______, 
-  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  _______,       _______,       _______,  KC_HOME,  KC_PGDN,  KC_PGUP,   KC_END 
+  CTL_GRV,   KC_1,     KC_2,     KC_3,     KC_4,     KC_5,     KC_6,     KC_7,     KC_8,     KC_9,     KC_0,    CTL_QT,
+  _______,  XXXXXXX,  XXXXXXX,  XXXXXXX,  KC_BSLS,  KC_LBRC,  KC_RBRC,  KC_SLSH,  _______,  _______,  KC_PGUP,  _______,
+  XXXXXXX,  XXXXXXX,  XXXXXXX,  _______,  _______,       _______,       _______,  _______,  KC_HOME,  KC_PGDN,   KC_END
  ),
 
-/* 
+/*
  ========================================================= FN ==========================================================
  ---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------
 |         |         |         |         |         |         |         |         |         |         |         |         |
-|  RESET  |         |         |         |         |         |         |         |         |         |         |         |
+|  SLEEP  |         |         |         |         |         |         |         |         |         |         |  RESET  |
 |         |         |         |         |         |         |         |         |         |         |         |         |
 |---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------|
 |         |         |         |         |         |         |         |         |         |         |         |         |
-|  DEBUG  |         |         |         |         |         |         |         |         |         |         |         |
+|  WAKE   |         |         |         |         |         |         |         |         |         |         |  DEBUG  |
 |         |         |         |         |         |         |         |         |         |         |         |         |
 |---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------|
 |         |         |         |         |         |         |         |         |         |         |         |         |
-|         |         |         |         |         |         |         |         |  LT CLK |  WHL DN | WHL UP  | RT CLK  |
+|         |         |         |         |         |         |         |         |         |         |         |         |
 |         |         |         |         |         |         |         |         |         |         |         |         |
 |---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------|
 |         |         |         |         |         |                   |         |         |         |         |         |
-|  SLEEP  |   WAKE  |         |   FN    |         |                   |         |  MS LT  |  MS DN  |  MS UP  |  MS RT  |
+|   FN    |         |         |         |         |                   |         |         |         |         |         |
 |         |         |         |         |         |                   |         |         |         |         |         |
  ---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------
 */
  [_FN] = LAYOUT_planck_mit(
-  QK_BOOT,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX, 
-  DB_TOGG,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX, 
-  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  MS_BTN1,  MS_WHLD,  MS_WHLU,  MS_BTN2, 
-  KC_SLEP,  KC_WAKE,  XXXXXXX,    FN,     XXXXXXX,       XXXXXXX,       XXXXXXX,  MS_LEFT,  MS_DOWN,   MS_UP,   MS_RGHT
+  KC_SLEP,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  QK_BOOT,
+  KC_WAKE,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  DB_TOGG,
+  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,
+    FN,     XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,       XXXXXXX,       XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX
  )
 
 };
