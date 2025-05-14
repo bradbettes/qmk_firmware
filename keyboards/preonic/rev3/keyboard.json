@@ -64,7 +64,7 @@
     "board": "QMK_PROTON_C",
     "community_layouts": ["ortho_5x12"],
     "layout_aliases": {
-        "LAYOUT_preonic_grid": "LAYOUT_ortho_5x12"
+        "LAYOUT_preonic_grid": "LAYOUT_preonic_1x2uC"
     },
     "layouts": {
         "LAYOUT_preonic_1x2uC": {

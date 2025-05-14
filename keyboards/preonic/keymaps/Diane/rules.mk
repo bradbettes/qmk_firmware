@@ -1,0 +1,3 @@
+SRC += muse.c
+ENCODER_ENABLE = yes
+KEY_OVERRIDE_ENABLE = yes
