@@ -28,10 +28,6 @@ enum planck_layers {
 #define ST_CAPS (SFT_T(KC_CAPS))
 #define ST_ENT (SFT_T(KC_ENT))
 
-#define WIN_MIN (WIN_T(KC_MINS))
-
-#define ALT_EQL (ALT_T(KC_EQL))
-
 #define CTL_ESC (CTL_T(KC_ESC))
 #define CTL_DEL (CTL_T(KC_DEL))
 #define CTL_GRV (CTL_T(KC_GRV))
