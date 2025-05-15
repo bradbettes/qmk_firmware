@@ -41,7 +41,7 @@ enum planck_layers {
 
 #define CTL_RWD (CTL_T(KC_MRWD))
 #define ALT_PL  (ALT_T(KC_MPLY))
-#define GUI_FF  (CTL_T(KC_MFFD))
+#define GUI_FF  (GUI_T(KC_MFFD))
 
 //#define CTL_QT  (CTL_T(KC_QUOT))
 
