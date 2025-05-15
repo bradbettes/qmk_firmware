@@ -212,38 +212,58 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
            return true;             // Return true for normal processing of tap keycode
        case LT(0,KC_C):
            if (!record->tap.count && record->event.pressed) {
-               tap_code16(C(KC_C)); 
+               tap_code16(C(KC_C));
                return false;
            }
-           return true;             
+           return true;
        case LT(0,KC_V):
            if (!record->tap.count && record->event.pressed) {
-               tap_code16(C(KC_V));  
+               tap_code16(C(KC_V));
                return false;
            }
-           return true;             
+           return true;
        case LT(0,KC_A):
            if (!record->tap.count && record->event.pressed) {
-               tap_code16(C(KC_A)); 
+               tap_code16(C(KC_A));
                return false;
            }
-           return true;             
+           return true;
        case LT(0,KC_S):
            if (!record->tap.count && record->event.pressed) {
-               tap_code16(C(KC_S)); 
+               tap_code16(C(KC_S));
                return false;
            }
-           return true;             
+           return true;
         case LT(0,KC_Z):
            if (!record->tap.count && record->event.pressed) {
-               tap_code16(C(KC_Z)); 
+               tap_code16(C(KC_Z));
                return false;
            }
-           return true;             
+           return true;
    }
    return true;
 }
 
+layer_state_t layer_state_set_user(layer_state_t state) {
+    switch (get_highest_layer(state)) {
+    case _SPACE_FN:
+        rgblight_setrgb (RGB_GREEN);
+        break;
+    case _NAV:
+        rgblight_setrgb (RGB_MAGENTA);
+        break;
+    case _MOUSE:
+        rgblight_setrgb (RGB_ORANGE);
+        break;
+    case _FN:
+        rgblight_setrgb (RGB_RED);
+        break;
+    default: //  for any other layers, or the default layer
+        rgblight_setrgb (RGB_BLUE);
+        break;
+    }
+  return state;
+}
 
 //===== HOLD ONTO STUFF HERE =====>>
 
