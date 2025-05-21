@@ -17,7 +17,7 @@
 #pragma once
 
 #ifndef TEMPO_DEFAULT
-#    define TEMPO_DEFAULT 120
+#    define TEMPO_DEFAULT 30
 // in beats-per-minute
 #endif
 

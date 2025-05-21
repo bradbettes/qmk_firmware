@@ -150,6 +150,8 @@
  */
 #define TOS_HYMN_RISEN H__NOTE(_D5), H__NOTE(_E5), HD_NOTE(_F5), HD_NOTE(_F5), H__NOTE(_F5), HD_NOTE(_D5), E__NOTE(_E5), E__NOTE(_E5), H__NOTE(_C5), Q__NOTE(_D5), Q__NOTE(_D5), H__NOTE(_E5), H__NOTE(_C5), Q__NOTE(_G5), Q__NOTE(_F5), H__NOTE(_D5), H__NOTE(_E5), HD_NOTE(_F5), HD_NOTE(_F5), H__NOTE(_F5), HD_NOTE(_D5), E__NOTE(_E5), E__NOTE(_E5), H__NOTE(_C5), Q__NOTE(_D5), Q__NOTE(_D5), H__NOTE(_E5), H__NOTE(_C5), Q__NOTE(_G5), Q__NOTE(_F5), H__NOTE(_D5), H__NOTE(_C5), W__NOTE(_D5), W__NOTE(_E5), Q__NOTE(_A4), H__NOTE(_A4), Q__NOTE(_E5), Q__NOTE(_E5), Q__NOTE(_F5), Q__NOTE(_E5), Q__NOTE(_D5), Q__NOTE(_G5), Q__NOTE(_B4), Q__NOTE(_D5), Q__NOTE(_C5), M__NOTE(_F5, 80), H__NOTE(_D5), H__NOTE(_C5), W__NOTE(_D5), W__NOTE(_E5), Q__NOTE(_A4), H__NOTE(_A4), Q__NOTE(_E5), Q__NOTE(_E5), Q__NOTE(_F5), Q__NOTE(_E5), Q__NOTE(_D5), Q__NOTE(_G5), Q__NOTE(_B4), Q__NOTE(_D5), Q__NOTE(_C5), M__NOTE(_F5, 80)
 
+#define IMPERIAL_MARCH QD_NOTE(_A4), QD_NOTE(_A4), S__NOTE(_A4), S__NOTE(_A4), S__NOTE(_A4), S__NOTE(_A4), E__NOTE(_F4), E__NOTE(_REST), QD_NOTE(_A4), QD_NOTE(_A4), S__NOTE(_A4), S__NOTE(_A4), S__NOTE(_A4), S__NOTE(_A4), E__NOTE(_F4), E__NOTE(_REST), Q__NOTE(_A4), Q__NOTE(_A4), Q__NOTE(_A4), ED_NOTE(_F4), S__NOTE(_C5), Q__NOTE(_A4), ED_NOTE(_F4), S__NOTE(_C5), H__NOTE(_A4), Q__NOTE(_E5), Q__NOTE(_E5), Q__NOTE(_E5), ED_NOTE(_F5), S__NOTE(_C5), Q__NOTE(_A4), ED_NOTE(_F4), S__NOTE(_C5), H__NOTE(_A4), Q__NOTE(_A5), ED_NOTE(_A4), S__NOTE(_A4), Q__NOTE(_A5), ED_NOTE(_GS5), S__NOTE(_G5), S__NOTE(_DS5), S__NOTE(_D5), E__NOTE(_DS5), E__NOTE(_REST), E__NOTE(_A4), Q__NOTE(_DS5), ED_NOTE(_D5), S__NOTE(_CS5), S__NOTE(_C5), S__NOTE(_B4), S__NOTE(_C5), E__NOTE(_REST), E__NOTE(_F4), Q__NOTE(_GS4), ED_NOTE(_F4), SD_NOTE(_A4), Q__NOTE(_C5), ED_NOTE(_A4), S__NOTE(_C5), H__NOTE(_E5), Q__NOTE(_A5), ED_NOTE(_A4), S__NOTE(_A4), Q__NOTE(_A5), ED_NOTE(_GS5), S__NOTE(_G5), S__NOTE(_DS5), S__NOTE(_D5), E__NOTE(_DS5), E__NOTE(_REST), E__NOTE(_A4), Q__NOTE(_DS5), ED_NOTE(_D5), S__NOTE(_CS5), S__NOTE(_C5), S__NOTE(_B4), S__NOTE(_C5), E__NOTE(_REST), E__NOTE(_F4), Q__NOTE(_GS4), ED_NOTE(_F4), SD_NOTE(_A4), Q__NOTE(_A4), ED_NOTE(_F4), S__NOTE(_C5), H__NOTE(_A4)
+
 /* Removed sounds
  +   This list is here solely for compatibility, so that removed songs don't just break things
  *   If you think that any of these songs were wrongfully removed, let us know and provide
@@ -165,9 +167,9 @@
 #ifndef IN_LIKE_FLINT
 #    define IN_LIKE_FLINT
 #endif
-#ifndef IMPERIAL_MARCH
-#    define IMPERIAL_MARCH
-#endif
+//#ifndef IMPERIAL_MARCH
+//#    define IMPERIAL_MARCH
+//#endif
 #ifndef BASKET_CASE
 #    define BASKET_CASE
 #endif
