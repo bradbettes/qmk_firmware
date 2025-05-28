@@ -39,6 +39,9 @@ enum planck_layers {
 #define CNTL_S  LT(0,KC_S)
 #define CNTL_Z  LT(0,KC_Z)
 
+#define CTL_ESC (CTL_T(KC_ESC))
+#define CTL_DEL (CTL_T(KC_DEL))
+
 #define CTL_RWD (CTL_T(KC_MRWD))
 #define ALT_PL  (ALT_T(KC_MPLY))
 #define GUI_FF  (GUI_T(KC_MFFD))
@@ -56,7 +59,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 |---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------|
 |         |         |         |         |         |         |         |         |         |         |         |         |
 |   ESC   |    A    |    S    |    D    |    F    |    G    |    H    |    J    |    K    |    L    |    ;    |   DEL   |
-|         |         |         |         |         |         |         |         |         |         |         |         |
+|  CNTRL  |         |         |         |         |         |         |         |         |         |         |  CNTRL  |
 |---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------|
 |         |         |         |         |         |         |         |         |         |         |         |         |
 |   CAPS  |    Z    |    X    |    C    |    V    |    B    |    N    |    M    |    ,    |    .    |    /    |  ENTER  |
@@ -68,17 +71,17 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  ---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------
 */
  [_QWERTY] = LAYOUT_planck_mit(
-  KC_TAB,    KC_Q,     KC_W,     KC_E,     KC_R,     KC_T,     KC_Y,     KC_U,    KC_I,     KC_O,     KC_P,     KC_BSPC,
-  KC_ESC,   CNTL_A,   CNTL_S,    KC_D,     KC_F,     KC_G,     KC_H,     KC_J,    KC_K,     KC_L,     KC_SCLN,  KC_DEL,
-  ST_CAPS,  CNTL_Z,   CNTL_X,   CNTL_C,   CNTL_V,    KC_B,     KC_N,     KC_M,    KC_COMM,  KC_DOT,   KC_SLSH,  ST_ENT,
-  KC_MUTE,  CTL_RWD,  ALT_PL,   GUI_FF,    MOUSE,        SPACE_FN,        NAV,    KC_LCTL,  KC_LALT,  KC_LGUI,     FN
+  KC_TAB,    KC_Q,     KC_W,     KC_E,     KC_R,     KC_T,      KC_Y,     KC_U,    KC_I,      KC_O,     KC_P,    KC_BSPC,
+  CTL_ESC,  CNTL_A,   CNTL_S,    KC_D,     KC_F,     KC_G,      KC_H,     KC_J,    KC_K,      KC_L,    KC_SCLN,  CTL_DEL,
+  ST_CAPS,  CNTL_Z,   CNTL_X,   CNTL_C,   CNTL_V,    KC_B,      KC_N,     KC_M,   KC_COMM,   KC_DOT,   KC_SLSH,  ST_ENT,
+  KC_MUTE,  CTL_RWD,  ALT_PL,   GUI_FF,    MOUSE,        SPACE_FN,        NAV,    KC_LCTL,   KC_LALT,  KC_LGUI,     FN
  ),
 
 /*
  ====================================================== SPACE_FN =======================================================
  ---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------
 |         |         |         |         |         |         |         |         |         |         |         |         |
-|   INS   |    F1   |    F2   |    F3   |    F4   |    F5   |   F6    |   F7    |   F8    |   F9    |   F10   |   BKSP  |
+|   TAB   |    F1   |    F2   |    F3   |    F4   |    F5   |   F6    |   F7    |   F8    |   F9    |   F10   |   BKSP  |
 |         |         |         |         |         |         |         |         |         |         |         |         |
 |---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------|
 |         |         |         |         |         |         |         |         |         |         |         |         |

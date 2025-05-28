@@ -40,6 +40,9 @@ enum preonic_layers {
 #define CNTL_S  LT(0,KC_S)
 #define CNTL_Z  LT(0,KC_Z)
 
+#define CTL_ESC (CTL_T(KC_ESC))
+#define CTL_QT (CTL_T(KC_QUOT))
+
 #define CTL_RWD (CTL_T(KC_MRWD))
 #define ALT_PL  (ALT_T(KC_MPLY))
 #define GUI_FF  (CTL_T(KC_MFFD))
@@ -59,23 +62,23 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 |---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------|
 |         |         |         |         |         |         |         |         |         |         |         |         |
 |   ESC   |    A    |    S    |    D    |    F    |    G    |    H    |    J    |    K    |    L    |    ;    |    '    |
-|         |         |         |         |         |         |         |         |         |         |         |         |
+|  CNTRL  |         |         |         |         |         |         |         |         |         |         |  CNTRL  |
 |---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------|
 |         |         |         |         |         |         |         |         |         |         |         |         |
 |   CAPS  |    Z    |    X    |    C    |    V    |    B    |    N    |    M    |    ,    |    .    |    /    |  ENTER  |
 |  SHIFT  |         |         |         |         |         |         |         |         |         |         |  SHIFT  |
 |---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------|
 | VOL U/D |         |         |         |         |                   |         |         |         |         |         |
-| ENCODER |    REW  |  PL/PS  |   FF    |    -    |      SPACE_FN     |    =    |   CTRL  |   ALT   |   GUI   |   FN    |
-| KC_MUTE |   CTRL  |   ALT   |   GUI   |  MOUSE  |                   |   NAV   |         |         |         |         |
+| ENCODER |   CTRL  |   ALT   |   GUI   |    -    |      SPACE_FN     |    =    |   CTRL  |   ALT   |   GUI   |   FN    |
+| FN_MUTE |         |         |         |         |                   |         |         |         |         |         |
  ---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------
 */
  [_QWERTY] = LAYOUT_preonic_grid(
   KC_GRV,    KC_1,     KC_2,     KC_3,     KC_4,     KC_5,     KC_6,     KC_7,     KC_8,     KC_9,     KC_0,    KC_BSPC,
   KC_TAB,    KC_Q,     KC_W,     KC_E,     KC_R,     KC_T,     KC_Y,     KC_U,     KC_I,     KC_O,     KC_P,    KC_DEL,
-  KC_ESC,   CNTL_A,   CNTL_S,    KC_D,     KC_F,     KC_G,     KC_H,     KC_J,    KC_K,     KC_L,     KC_SCLN,  KC_QUOT,
+  CTL_ESC,  CNTL_A,   CNTL_S,    KC_D,     KC_F,     KC_G,     KC_H,     KC_J,    KC_K,     KC_L,     KC_SCLN,  CTL_QT,
   ST_CAPS,  CNTL_Z,   CNTL_X,   CNTL_C,   CNTL_V,    KC_B,     KC_N,     KC_M,    KC_COMM,  KC_DOT,   KC_SLSH,  ST_ENT,
-  KC_MUTE,  CTL_RWD,  ALT_PL,   GUI_FF,    MOUSE,        SPACE_FN,        NAV,    KC_LCTL,  KC_LALT,  KC_LGUI,     FN
+  KC_MUTE,  KC_LCTL,  KC_LALT,  KC_LGUI,  KC_MINS,      SPACE_FN,       KC_EQL,   KC_LCTL,  KC_LALT,  KC_LGUI,    FN
  ),
 
 /*
@@ -86,15 +89,15 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 |         |         |         |         |         |         |         |         |         |         |         |         |
 |---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------|
 |         |         |         |         |         |         |         |         |         |         |         |         |
-|         |         |         |         |         |         |         |         |         |         |         |   DEL   |
+|   TAB   |         |         |  PG UP  |         |         |         |         |    UP   |         |         |   DEL   |
 |         |         |         |         |         |         |         |         |         |         |         |         |
 |---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------|
 |         |         |         |         |         |         |         |         |         |         |         |         |
-|         |    1    |    2    |    3    |    4    |    5    |    6    |    7    |    8    |    9    |    0    |    '    |
-|         |         |         |         |         |         |         |         |         |         |         |         |
+|   ESC   |         |   HOME  |  PG DN  |   END   |         |         |    LT   |    DN   |   RT    |         |    '    |
+|  CNTRL  |         |         |         |         |         |         |         |         |         |         |  CNTRL  |
 |---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------|
 |         |         |         |         |         |         |         |         |         |         |         |         |
-|   CAPS  |         |         |         |         |    [    |    ]    |         |    ,    |    .    |    \    |  ENTER  |
+|   CAPS  |         |         |         |    {    |    [    |    ]    |    }    |    ,    |    .    |    \    |  ENTER  |
 |  SHIFT  |         |         |         |         |         |         |         |         |         |         |  SHIFT  |
 |---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------|
 |         |         |         |         |         |                   |         |         |         |         |         |
@@ -104,10 +107,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 */
  [_SPACE_FN] = LAYOUT_preonic_grid(
   KC_INS,    KC_F1,    KC_F2,    KC_F3,    KC_F4,    KC_F5,    KC_F6,    KC_F7,    KC_F8,    KC_F9,   KC_F10,   _______,
-  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  _______,
-  XXXXXXX,   KC_1,     KC_2,     KC_3,     KC_4,     KC_5,     KC_6,     KC_7,     KC_8,     KC_9,     KC_0,    _______,
-  _______,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  KC_LBRC,  KC_RBRC,  XXXXXXX,  _______,  _______,  KC_BSLS,  _______,
-  _______,  KC_LCTL,  KC_LALT,  KC_LGUI,  KC_MINS,       _______,       KC_EQL,   KC_LCTL,  KC_LALT,  KC_LGUI,  XXXXXXX
+  _______,  XXXXXXX,  XXXXXXX,  KC_PGUP,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,   KC_UP,   XXXXXXX,  XXXXXXX,  _______,
+  _______,  XXXXXXX,  KC_HOME,  KC_PGDN,  KC_END,   XXXXXXX,  XXXXXXX,  KC_LEFT,  KC_DOWN,  KC_RGHT,  XXXXXXX,  _______,
+  _______,  XXXXXXX,  XXXXXXX,  XXXXXXX,  KC_LCBR,  KC_LBRC,  KC_RBRC,  KC_RCBR,  _______,  _______,  KC_BSLS,  _______,
+  _______,  _______,  _______,  _______,  _______,       _______,       _______,  _______,  _______,  _______,  XXXXXXX
  ),
 
 /*
@@ -123,7 +126,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 |---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------|
 |         |         |         |         |         |         |         |         |         |         |         |         |
 |   ESC   |   HOME  |  PG DN  |   END   |         |         |         |         |    LT   |    DN   |   RT    |         |
-|         |         |         |         |         |         |         |         |         |         |         |         |
+|  CNTRL  |         |         |         |         |         |         |         |         |         |         |         |
 |---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------|
 |         |         |         |         |         |         |         |         |         |         |         |         |
 |   CAPS  |         |         |         |         |         |         |         |         |         |         |  ENTER  |
@@ -134,14 +137,15 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 |         |         |         |         |         |                   |   NAV   |         |         |         |         |
  ---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------
 */
+/*
  [_NAV] = LAYOUT_preonic_grid(
   XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  _______,
   KC_TAB,   XXXXXXX,  KC_PGUP,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,   KC_UP,   XXXXXXX,  _______,
-  KC_ESC,   KC_HOME,  KC_PGDN,  KC_END,   XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  KC_LEFT,  KC_DOWN,  KC_RGHT,  XXXXXXX,
+  _______,  KC_HOME,  KC_PGDN,  KC_END,   XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  KC_LEFT,  KC_DOWN,  KC_RGHT,  XXXXXXX,
   _______,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  _______,
   XXXXXXX,  KC_LCTL,  KC_LALT,  KC_LGUI,  XXXXXXX,       _______,         NAV,    KC_LCTL,  KC_LALT,  KC_LGUI,  XXXXXXX
  ),
-
+*/
 /*
  ======================================================== MOUSE ========================================================
  ---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------
@@ -166,6 +170,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 |         |         |         |         |  MOUSE  |                   |         |         |         |         |         |
  ---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------
 */
+/*
  [_MOUSE] = LAYOUT_preonic_grid(
   XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,
   XXXXXXX,  XXXXXXX,  MS_WHLU,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  MS_BTN1,   MS_UP,   MS_BTN2,  XXXXXXX,
@@ -173,7 +178,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   _______,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  _______,
   XXXXXXX,  KC_LCTL,  KC_LALT,  KC_LGUI,   MOUSE,        XXXXXXX,       XXXXXXX,  KC_LCTL,  KC_LALT,  KC_LGUI,  XXXXXXX
  ),
-
+*/
 /*
  ========================================================= FN ==========================================================
  ---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------
@@ -236,36 +241,57 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
            return true;             // Return true for normal processing of tap keycode
        case LT(0,KC_C):
            if (!record->tap.count && record->event.pressed) {
-               tap_code16(C(KC_C)); 
+               tap_code16(C(KC_C));
                return false;
            }
-           return true;             
+           return true;
        case LT(0,KC_V):
            if (!record->tap.count && record->event.pressed) {
-               tap_code16(C(KC_V));  
+               tap_code16(C(KC_V));
                return false;
            }
-           return true;             
+           return true;
        case LT(0,KC_A):
            if (!record->tap.count && record->event.pressed) {
-               tap_code16(C(KC_A)); 
+               tap_code16(C(KC_A));
                return false;
            }
-           return true;             
+           return true;
        case LT(0,KC_S):
            if (!record->tap.count && record->event.pressed) {
-               tap_code16(C(KC_S)); 
+               tap_code16(C(KC_S));
                return false;
            }
-           return true;             
+           return true;
         case LT(0,KC_Z):
            if (!record->tap.count && record->event.pressed) {
-               tap_code16(C(KC_Z)); 
+               tap_code16(C(KC_Z));
                return false;
            }
-           return true;             
+           return true;
    }
    return true;
+}
+
+layer_state_t layer_state_set_user(layer_state_t state) {
+    switch (get_highest_layer(state)) {
+    case _SPACE_FN:
+        rgblight_setrgb (RGB_GREEN);
+        break;
+//    case _NAV:
+//        rgblight_setrgb (RGB_MAGENTA);
+//        break;
+//    case _MOUSE:
+//        rgblight_setrgb (RGB_ORANGE);
+//        break;
+    case _FN:
+        rgblight_setrgb (RGB_RED);
+        break;
+    default: //  for any other layers, or the default layer
+        rgblight_setrgb (RGB_BLUE);
+        break;
+    }
+  return state;
 }
 
 /*
