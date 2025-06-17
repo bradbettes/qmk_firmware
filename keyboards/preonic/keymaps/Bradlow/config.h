@@ -47,3 +47,10 @@
 /* override number of MIDI tone keycodes (each octave adds 12 keycodes and allocates 12 bytes) */
 //#define MIDI_TONE_KEYCODE_OCTAVES 2
 
+#define TAPPING_TERM 175
+#define TAPPING_TERM_PER_KEY
+
+#define RGBLIGHT_SLEEP
+#define MK_KINETIC_SPEED
+#define MOUSEKEY_INITIAL_SPEED 250
+#define MOUSEKEY_BASE_SPEED 3000
