@@ -1,0 +1,476 @@
+/* Copyright 2015-2021 Jack Humbert
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
+#include QMK_KEYBOARD_H
+#include "muse.h"
+
+enum preonic_layers {
+   _QWERTY,
+   _SPACE_FN,
+   _NAV,
+   _MOUSE,
+   _FN
+ };
+
+#define SPACE_FN LT(_SPACE_FN, KC_SPC)
+#define FN       MO(_FN)
+#define NAV      LT(_NAV, KC_EQL)
+#define MOUSE    LT(_MOUSE, KC_MINS)
+
+#define ST_CAPS (SFT_T(KC_CAPS))
+#define ST_ENT (SFT_T(KC_ENT))
+
+#define CNTL_X  LT(0,KC_X)
+#define CNTL_C  LT(0,KC_C)
+#define CNTL_V  LT(0,KC_V)
+#define CNTL_A  LT(0,KC_A)
+#define CNTL_S  LT(0,KC_S)
+#define CNTL_Z  LT(0,KC_Z)
+
+#define CTL_ESC (CTL_T(KC_ESC))
+#define CTL_QT (CTL_T(KC_QUOT))
+
+#define SS_LOTO LT(0,KC_1)
+#define SS_CAL  LT(0,KC_2)
+#define SS_PM   LT(0,KC_3)
+
+// Defines modified shifted state of Up button to ?
+const key_override_t shift_up_question = ko_make_basic(MOD_MASK_SHIFT, KC_UP, KC_QUES);
+
+// This globally defines all key overrides to be used
+const key_override_t *key_overrides[] = {
+	&shift_up_question
+};
+
+const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
+
+/*
+ ======================================================= QWERTY ========================================================
+ ---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------
+|         |         |         |         |         |         |         |         |         |         |         |         |
+|    `    |    1    |    2    |    3    |    4    |    5    |    6    |    7    |    8    |    9    |    0    |   BKSP  |
+|         |   LOTO  |   CAL   |    PM   |         |         |         |         |         |         |         |         |
+|---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------|
+|         |         |         |         |         |         |         |         |         |         |         |         |
+|   TAB   |    Q    |    W    |    E    |    R    |    T    |    Y    |    U    |    I    |    O    |    P    |   DEL   |
+|         |         |         |         |         |         |         |         |         |         |         |         |
+|---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------|
+|         |         |         |         |         |         |         |         |         |         |         |         |
+|   ESC   |    A    |    S    |    D    |    F    |    G    |    H    |    J    |    K    |    L    |    ;    |    '    |
+|  CNTRL  |         |         |         |         |         |         |         |         |         |         |  CNTRL  |
+|---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------|
+|   CAPS  |         |         |         |         |         |         |         |         |         |         |  ENTER  |
+|         |    Z    |    X    |    C    |    V    |    B    |    N    |    M    |    ,    |    .    |   UP    |         |
+|  SHIFT  |         |         |         |         |         |         |         |         |         |         |  SHIFT  |
+|---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------|
+| VOL U/D |         |         |         |         |                   |         |         |         |         |         |
+| ENCODER |    FN   |   CTRL  |   ALT   |    -    |      SPACE_FN     |    =    |   GUI   |   LEFT  |   DN    |  RIGHT  |
+| FN_MUTE |         |         |         |  MOUSE  |                   |         |         |         |         |         |
+ ---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------
+*/
+ [_QWERTY] = LAYOUT_preonic_grid(
+  KC_GRV,   SS_LOTO,  SS_CAL,   SS_PM,     KC_4,     KC_5,     KC_6,     KC_7,     KC_8,     KC_9,     KC_0,     KC_BSPC,
+  KC_TAB,    KC_Q,     KC_W,     KC_E,     KC_R,     KC_T,     KC_Y,     KC_U,     KC_I,     KC_O,     KC_P,     KC_DEL,
+  KC_ESC,   CNTL_A,   CNTL_S,    KC_D,     KC_F,     KC_G,     KC_H,     KC_J,     KC_K,     KC_L,     KC_SCLN,  KC_QUOT,
+  ST_CAPS,  CNTL_Z,   CNTL_X,   CNTL_C,   CNTL_V,    KC_B,     KC_N,     KC_M,     KC_COMM,  KC_DOT,   KC_UP,    ST_ENT,
+  KC_MUTE,    FN,     KC_LCTL,  KC_LALT,   MOUSE,       SPACE_FN,        KC_EQL,   KC_LGUI,  KC_LEFT,  KC_DOWN,  KC_RGHT
+ ),
+
+/*
+ ====================================================== SPACE_FN =======================================================
+ ---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------
+|         |         |         |         |         |         |         |         |         |         |         |         |
+|   INS   |    F1   |    F2   |    F3   |    F4   |    F5   |   F6    |   F7    |   F8    |   F9    |   F10   |   BKSP  |
+|         |         |         |         |         |         |         |         |         |         |         |         |
+|---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------|
+|         |         |         |         |         |         |         |         |         |         |         |         |
+|   TAB   |         |         |         |         |         |         |         |         |         |         |   DEL   |
+|         |         |         |         |         |         |         |         |         |         |         |         |
+|---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------|
+|         |         |         |         |         |         |         |         |         |         |         |         |
+|   ESC   |    1    |    2    |    3    |    4    |    5    |    6    |    7    |    8    |    9    |    0    |    '    |
+|  CNTRL  |         |         |         |         |         |         |         |         |         |         |  CNTRL  |
+|---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------|
+|         |         |         |         |         |         |         |         |         |         |         |         |
+|   CAPS  |         |         |         |    \    |    [    |    ]    |    /    |    ,    |    .    |   UP    |  ENTER  |
+|  SHIFT  |         |         |         |         |         |         |         |         |         |         |  SHIFT  |
+|---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------|
+|         |         |         |         |         |                   |         |         |         |         |         |
+| ENCODER |         |   CTRL  |   ALT   |    -    |      SPACE_FN     |    =    |   GUI   |   LEFT  |   DN    |  RIGHT  |
+|         |         |         |         |         |                   |         |         |         |         |         |
+ ---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------
+*/
+ [_SPACE_FN] = LAYOUT_preonic_grid(
+  KC_INS,    KC_F1,    KC_F2,    KC_F3,    KC_F4,    KC_F5,    KC_F6,    KC_F7,    KC_F8,    KC_F9,   KC_F10,   _______,
+  _______,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  _______,
+  _______,   KC_1,     KC_2,     KC_3,     KC_4,     KC_5,     KC_6,     KC_7,     KC_8,     KC_9,     KC_0,    _______,
+  _______,  XXXXXXX,  XXXXXXX,  XXXXXXX,  KC_BSLS,  KC_LBRC,  KC_RBRC,  KC_SLSH,  _______,  _______,  _______,  _______,
+  _______,  XXXXXXX,  _______,  _______,  KC_MINS,       _______,       _______,  _______,  _______,  _______,  _______
+ ),
+
+/*
+ ========================================================= NAV =========================================================
+ ---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------
+|         |         |         |         |         |         |         |         |         |         |         |         |
+|         |         |         |         |         |         |         |         |         |         |         |   BKSP  |
+|         |         |         |         |         |         |         |         |         |         |         |         |
+|---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------|
+|         |         |         |         |         |         |         |         |         |         |         |         |
+|   TAB   |         |  PG UP  |         |         |         |         |         |         |    UP   |         |   DEL   |
+|         |         |         |         |         |         |         |         |         |         |         |         |
+|---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------|
+|         |         |         |         |         |         |         |         |         |         |         |         |
+|   ESC   |   HOME  |  PG DN  |   END   |         |         |         |         |    LT   |    DN   |   RT    |         |
+|  CNTRL  |         |         |         |         |         |         |         |         |         |         |         |
+|---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------|
+|         |         |         |         |         |         |         |         |         |         |         |         |
+|   CAPS  |         |         |         |         |         |         |         |         |         |         |  ENTER  |
+|  SHIFT  |         |         |         |         |         |         |         |         |         |         |  SHIFT  |
+|---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------|
+|         |         |         |         |         |                   |         |         |         |         |         |
+|         |  CTRL   |   ALT   |   GUI   |         |                   |         |  CTRL   |   ALT   |   GUI   |         |
+|         |         |         |         |         |                   |   NAV   |         |         |         |         |
+ ---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------
+*/
+/*
+ [_NAV] = LAYOUT_preonic_grid(
+  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  _______,
+  KC_TAB,   XXXXXXX,  KC_PGUP,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,   KC_UP,   XXXXXXX,  _______,
+  _______,  KC_HOME,  KC_PGDN,  KC_END,   XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  KC_LEFT,  KC_DOWN,  KC_RGHT,  XXXXXXX,
+  _______,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  _______,
+  XXXXXXX,  KC_LCTL,  KC_LALT,  KC_LGUI,  XXXXXXX,       _______,         NAV,    KC_LCTL,  KC_LALT,  KC_LGUI,  XXXXXXX
+ ),
+*/
+/*
+ ======================================================== MOUSE ========================================================
+ ---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------
+|         |         |         |         |         |         |         |         |         |         |         |         |
+|         |         |         |         |         |         |         |         |         |         |         |         |
+|         |         |         |         |         |         |         |         |         |         |         |         |
+|---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------|
+|         |         |         |         |         |         |         |         |         |         |         |         |
+|         |  RT_CK  |  MS_UP  |  LT_CK  |         |         |         |         |         |         |         |         |
+|         |         |         |         |         |         |         |         |         |         |         |         |
+|---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------|
+|         |         |         |         |         |         |         |         |         |         |         |         |
+|         |  MS_LT  |  MS_DN  |  MS_RT  |         |         |         |         |         |         |         |         |
+|         |         |         |         |         |         |         |         |         |         |         |         |
+|---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------|
+|         |         |         |         |         |         |         |         |         |         |         |         |
+|         |         |         |         |         |         |         |         |         |         |  SC_UP  |         |
+|         |         |         |         |         |         |         |         |         |         |         |         |
+|---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------|
+|         |         |         |         |         |                   |         |         |         |         |         |
+|         |         |         |         |  MOUSE  |                   |         |         |  SC_LT  |  SC_DN  |  SC_RT  |
+|         |         |         |         |         |                   |         |         |         |         |         |
+ ---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------
+*/
+
+ [_MOUSE] = LAYOUT_preonic_grid(
+  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,
+  XXXXXXX,  MS_BTN2,   MS_UP,   MS_BTN1,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,
+  XXXXXXX,  MS_LEFT,  MS_DOWN,  MS_RGHT,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,
+  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  MS_WHLU,  XXXXXXX,
+  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,   MOUSE,        XXXXXXX,       XXXXXXX,  XXXXXXX,  MS_WHLL,  MS_WHLD,  MS_WHLR
+ ),
+
+/*
+ ========================================================= FN ==========================================================
+ ---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------
+|         |         |         |         |         |         |         |         |         |         |         |         |
+|  RESET  |    F1   |    F2   |    F3   |    F4   |    F5   |   F6    |   F7    |   F8    |   F9    |   F10   |  SLEEP  |
+|         |         |         |         |         |         |         |         |         |         |         |         |
+|---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------|
+|         |         |         |         |         |         |         |         |         |         |         |         |
+|  DEBUG  |   F11   |   F12   |   F13   |   F14   |   F15   |   F16   |   F17   |   F18   |   F19   |   F20   |  WAKE   |
+|         |         |         |         |         |         |         |         |         |         |         |         |
+|---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------|
+|         |         |         |         |         |         |         |         |         |         |         |         |
+|         |         |         |         |         |         |         |         |         |         |         |         |
+|         |         |         |         |         |         |         |         |         |         |         |         |
+|---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------|
+|         |         |         |         |         |         |         |         |         |         |         |         |
+|         |         |         |         |         |         |         |         |         |         |         |         |
+|         |         |         |         |         |         |         |         |         |         |         |         |
+|---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------|
+|         |         |         |         |         |                   |         |         |         |         |         |
+|         |    FN   |         |         |         |                   |         |         |         |         |         |
+|         |         |         |         |         |                   |         |         |         |         |         |
+ ---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------
+*/
+ [_FN] = LAYOUT_preonic_grid(
+  KC_SLEP,   KC_F1,    KC_F2,    KC_F3,    KC_F4,    KC_F5,    KC_F6,    KC_F7,    KC_F8,    KC_F9,    KC_F10,  QK_BOOT,
+  KC_WAKE,   KC_F11,   KC_F12,   KC_F13,   KC_F14,   KC_F15,   KC_F16,   KC_F17,   KC_F18,   KC_F19,   KC_F20,  DB_TOGG,
+  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,
+  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,
+  XXXXXXX,    FN,     XXXXXXX,  XXXXXXX,  XXXXXXX,       XXXXXXX,       XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX
+ )
+
+};
+uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
+    switch (keycode) {
+        case CNTL_X:
+            return TAPPING_TERM + 200;  // Adding "+" value to TAPPING_TERM stated in config.h
+        case CNTL_C:
+            return TAPPING_TERM + 200;
+        case CNTL_V:
+            return TAPPING_TERM + 200;
+        case CNTL_A:
+            return TAPPING_TERM + 200;
+        case CNTL_S:
+            return TAPPING_TERM + 200;
+        case CNTL_Z:
+            return TAPPING_TERM + 200;
+        case SS_LOTO:
+            return TAPPING_TERM + 200;
+        case SS_CAL:
+            return TAPPING_TERM + 200;
+        case SS_PM:
+            return TAPPING_TERM + 200;
+        default:
+            return TAPPING_TERM;
+    }
+}
+
+bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+   switch (keycode) {
+       case LT(0,KC_X):
+           if (!record->tap.count && record->event.pressed) {
+               tap_code16(C(KC_X)); // Intercept hold function to send Ctrl-X
+               return false;
+           }
+           return true;             // Return true for normal processing of tap keycode
+       case LT(0,KC_C):
+           if (!record->tap.count && record->event.pressed) {
+               tap_code16(C(KC_C));
+               return false;
+           }
+           return true;
+       case LT(0,KC_V):
+           if (!record->tap.count && record->event.pressed) {
+               tap_code16(C(KC_V));
+               return false;
+           }
+           return true;
+       case LT(0,KC_A):
+           if (!record->tap.count && record->event.pressed) {
+               tap_code16(C(KC_A));
+               return false;
+           }
+           return true;
+       case LT(0,KC_S):
+           if (!record->tap.count && record->event.pressed) {
+               tap_code16(C(KC_S));
+               return false;
+           }
+           return true;
+        case LT(0,KC_Z):
+           if (!record->tap.count && record->event.pressed) {
+               tap_code16(C(KC_Z));
+               return false;
+           }
+           return true;
+        case LT(0,KC_1):
+           if (record->event.pressed) {
+                SEND_STRING("Security gate verified by 536844");
+                return false;
+           }
+           if (!record->tap.count && record->event.pressed) {
+               tap_code16(SS_LOTO);
+               return false;
+           }
+           return true;
+        case LT(0,KC_2):
+           if (record->event.pressed) {
+                SEND_STRING("<1.2 cal/cm2 incident energy");
+                return false;
+           }
+           if (!record->tap.count && record->event.pressed) {
+               tap_code16(SS_CAL);
+               return false;
+           }
+           return true;
+        case LT(0,KC_3):
+           if (record->event.pressed) {
+                SEND_STRING("Completed PTP. Inspected area around camera station. Cameras visually inspected and triggering as required, cameras clean, packages stable through scan tunnel, LED/HID lights operating properly, lenses clean no further action needed at this time.");
+                return false;
+           }
+           if (!record->tap.count && record->event.pressed) {
+               tap_code16(SS_PM);
+               return false;
+           }
+           return true;
+   }
+   return true;
+}
+
+
+
+layer_state_t layer_state_set_user(layer_state_t state) {
+    switch (get_highest_layer(state)) {
+    case _SPACE_FN:
+        rgblight_setrgb (RGB_GREEN);
+        break;
+//    case _NAV:
+//        rgblight_setrgb (RGB_MAGENTA);
+//        break;
+    case _MOUSE:
+        rgblight_setrgb (RGB_ORANGE);
+        break;
+    case _FN:
+        rgblight_setrgb (RGB_RED);
+        break;
+    default: //  for any other layers, or the default layer
+        rgblight_setrgb (RGB_BLUE);
+        break;
+    }
+  return state;
+}
+
+/*
+bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+  switch (keycode) {
+        case LOWER:
+          if (record->event.pressed) {
+            layer_on(_LOWER);
+            update_tri_layer(_LOWER, _RAISE, _ADJUST);
+          } else {
+            layer_off(_LOWER);
+            update_tri_layer(_LOWER, _RAISE, _ADJUST);
+          }
+          return false;
+          break;
+        case RAISE:
+          if (record->event.pressed) {
+            layer_on(_RAISE);
+            update_tri_layer(_LOWER, _RAISE, _ADJUST);
+          } else {
+            layer_off(_RAISE);
+            update_tri_layer(_LOWER, _RAISE, _ADJUST);
+          }
+          return false;
+          break;
+        case BACKLIT:
+          if (record->event.pressed) {
+            register_code(KC_RSFT);
+            #ifdef BACKLIGHT_ENABLE
+              backlight_step();
+            #endif
+            #ifdef RGBLIGHT_ENABLE
+              rgblight_step();
+            #endif
+            #ifdef __AVR__
+            gpio_write_pin_low(E6);
+            #endif
+          } else {
+            unregister_code(KC_RSFT);
+            #ifdef __AVR__
+            gpio_write_pin_high(E6);
+            #endif
+          }
+          return false;
+          break;
+      }
+    return true;
+};
+*/
+
+
+/*
+bool muse_mode = false;
+uint8_t last_muse_note = 0;
+uint16_t muse_counter = 0;
+uint8_t muse_offset = 70;
+uint16_t muse_tempo = 50;
+
+bool encoder_update_user(uint8_t index, bool clockwise) {
+  if (muse_mode) {
+    if (IS_LAYER_ON(_RAISE)) {
+      if (clockwise) {
+        muse_offset++;
+      } else {
+        muse_offset--;
+      }
+    } else {
+      if (clockwise) {
+        muse_tempo+=1;
+      } else {
+        muse_tempo-=1;
+      }
+    }
+  } else {
+    if (clockwise) {
+      register_code(KC_VOLU);
+      unregister_code(KC_VOLU);
+    } else {
+      register_code(KC_VOLD);
+      unregister_code(KC_VOLD);
+    }
+  }
+    return true;
+}
+
+bool dip_switch_update_user(uint8_t index, bool active) {
+    switch (index) {
+        case 0:
+            if (active) {
+                layer_on(_ADJUST);
+            } else {
+                layer_off(_ADJUST);
+            }
+            break;
+        case 1:
+            if (active) {
+                muse_mode = true;
+            } else {
+                muse_mode = false;
+            }
+    }
+    return true;
+}
+
+
+void matrix_scan_user(void) {
+#ifdef AUDIO_ENABLE
+    if (muse_mode) {
+        if (muse_counter == 0) {
+            uint8_t muse_note = muse_offset + SCALE[muse_clock_pulse()];
+            if (muse_note != last_muse_note) {
+                stop_note(compute_freq_for_midi_note(last_muse_note));
+                play_note(compute_freq_for_midi_note(muse_note), 0xF);
+                last_muse_note = muse_note;
+            }
+        }
+        muse_counter = (muse_counter + 1) % muse_tempo;
+    } else {
+        if (muse_counter) {
+            stop_all_notes();
+            muse_counter = 0;
+        }
+    }
+#endif
+}
+
+bool music_mask_user(uint16_t keycode) {
+  switch (keycode) {
+    case RAISE:
+    case LOWER:
+      return false;
+    default:
+      return true;
+  }
+}
+*/
