@@ -40,12 +40,12 @@ enum preonic_layers {
 #define CNTL_S  LT(0,KC_S)
 #define CNTL_Z  LT(0,KC_Z)
 
-#define CTL_ESC (CTL_T(KC_ESC))
-#define CTL_QT (CTL_T(KC_QUOT))
+//#define CTL_ESC (CTL_T(KC_ESC))
+//#define CTL_QT (CTL_T(KC_QUOT))
 
-#define SS_LOTO LT(0,KC_1)
-#define SS_CAL  LT(0,KC_2)
-#define SS_PM   LT(0,KC_3)
+#define BETTES  LT(0,KC_1)
+#define D_2020  LT(0,KC_2)
+#define D_6449  LT(0,KC_3)
 
 // Defines modified shifted state of Up button to ?
 const key_override_t shift_up_question = ko_make_basic(MOD_MASK_SHIFT, KC_UP, KC_QUES);
@@ -62,7 +62,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  ---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------
 |         |         |         |         |         |         |         |         |         |         |         |         |
 |    `    |    1    |    2    |    3    |    4    |    5    |    6    |    7    |    8    |    9    |    0    |   BKSP  |
-|         |   LOTO  |   CAL   |    PM   |         |         |         |         |         |         |         |         |
+|         |bettebrp |  D2020  |  D6449  |         |         |         |         |         |         |         |         |
 |---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------|
 |         |         |         |         |         |         |         |         |         |         |         |         |
 |   TAB   |    Q    |    W    |    E    |    R    |    T    |    Y    |    U    |    I    |    O    |    P    |   DEL   |
@@ -70,7 +70,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 |---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------|
 |         |         |         |         |         |         |         |         |         |         |         |         |
 |   ESC   |    A    |    S    |    D    |    F    |    G    |    H    |    J    |    K    |    L    |    ;    |    '    |
-|  CNTRL  |         |         |         |         |         |         |         |         |         |         |  CNTRL  |
+|         |         |         |         |         |         |         |         |         |         |         |         |
 |---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------|
 |   CAPS  |         |         |         |         |         |         |         |         |         |         |  ENTER  |
 |         |    Z    |    X    |    C    |    V    |    B    |    N    |    M    |    ,    |    .    |   UP    |         |
@@ -82,7 +82,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  ---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------
 */
  [_QWERTY] = LAYOUT_preonic_grid(
-  KC_GRV,   SS_LOTO,  SS_CAL,   SS_PM,     KC_4,     KC_5,     KC_6,     KC_7,     KC_8,     KC_9,     KC_0,     KC_BSPC,
+  KC_GRV,   BETTES,   D_2020,   D_6449,    KC_4,     KC_5,     KC_6,     KC_7,     KC_8,     KC_9,     KC_0,     KC_BSPC,
   KC_TAB,    KC_Q,     KC_W,     KC_E,     KC_R,     KC_T,     KC_Y,     KC_U,     KC_I,     KC_O,     KC_P,     KC_DEL,
   KC_ESC,   CNTL_A,   CNTL_S,    KC_D,     KC_F,     KC_G,     KC_H,     KC_J,     KC_K,     KC_L,     KC_SCLN,  KC_QUOT,
   ST_CAPS,  CNTL_Z,   CNTL_X,   CNTL_C,   CNTL_V,    KC_B,     KC_N,     KC_M,     KC_COMM,  KC_DOT,   KC_UP,    ST_ENT,
@@ -102,7 +102,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 |---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------|
 |         |         |         |         |         |         |         |         |         |         |         |         |
 |   ESC   |    1    |    2    |    3    |    4    |    5    |    6    |    7    |    8    |    9    |    0    |    '    |
-|  CNTRL  |         |         |         |         |         |         |         |         |         |         |  CNTRL  |
+|         |         |         |         |         |         |         |         |         |         |         |         |
 |---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------|
 |         |         |         |         |         |         |         |         |         |         |         |         |
 |   CAPS  |         |         |         |    \    |    [    |    ]    |    /    |    ,    |    .    |   UP    |  ENTER  |
@@ -191,11 +191,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  ========================================================= FN ==========================================================
  ---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------
 |         |         |         |         |         |         |         |         |         |         |         |         |
-|  RESET  |    F1   |    F2   |    F3   |    F4   |    F5   |   F6    |   F7    |   F8    |   F9    |   F10   |  SLEEP  |
+|  SLEEP  |    F1   |    F2   |    F3   |    F4   |    F5   |   F6    |   F7    |   F8    |   F9    |   F10   |  RESET  |
 |         |         |         |         |         |         |         |         |         |         |         |         |
 |---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------|
 |         |         |         |         |         |         |         |         |         |         |         |         |
-|  DEBUG  |   F11   |   F12   |   F13   |   F14   |   F15   |   F16   |   F17   |   F18   |   F19   |   F20   |  WAKE   |
+|  WAKE   |   F11   |   F12   |   F13   |   F14   |   F15   |   F16   |   F17   |   F18   |   F19   |   F20   |  DEBUG  |
 |         |         |         |         |         |         |         |         |         |         |         |         |
 |---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------|
 |         |         |         |         |         |         |         |         |         |         |         |         |
@@ -234,14 +234,28 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
             return TAPPING_TERM + 200;
         case CNTL_Z:
             return TAPPING_TERM + 200;
-        case SS_LOTO:
+        case BETTES:
             return TAPPING_TERM + 200;
-        case SS_CAL:
+        case D_2020:
             return TAPPING_TERM + 200;
-        case SS_PM:
+        case D_6449:
             return TAPPING_TERM + 200;
         default:
             return TAPPING_TERM;
+    }
+}
+
+bool get_permissive_hold(uint16_t keycode, keyrecord_t *record) {
+    switch (keycode) {
+        case SFT_T(KC_CAPS):
+            // Immediately select the hold action when another key is tapped.
+            return true;
+        case SFT_T(KC_ENT):
+            // Immediately select the hold action when another key is tapped.
+            return true;
+        default:
+            // Do not select the hold action when another key is tapped.
+            return false;
     }
 }
 
@@ -284,33 +298,21 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
            }
            return true;
         case LT(0,KC_1):
-           if (record->event.pressed) {
-                SEND_STRING("Security gate verified by 536844");
-                return false;
-           }
            if (!record->tap.count && record->event.pressed) {
-               tap_code16(SS_LOTO);
-               return false;
+                SEND_STRING("bettebrp");
+                return false;
            }
            return true;
         case LT(0,KC_2):
-           if (record->event.pressed) {
-                SEND_STRING("<1.2 cal/cm2 incident energy");
-                return false;
-           }
            if (!record->tap.count && record->event.pressed) {
-               tap_code16(SS_CAL);
-               return false;
+                SEND_STRING("Diane..2020");
+                return false;
            }
            return true;
         case LT(0,KC_3):
-           if (record->event.pressed) {
-                SEND_STRING("Completed PTP. Inspected area around camera station. Cameras visually inspected and triggering as required, cameras clean, packages stable through scan tunnel, LED/HID lights operating properly, lenses clean no further action needed at this time.");
-                return false;
-           }
            if (!record->tap.count && record->event.pressed) {
-               tap_code16(SS_PM);
-               return false;
+                SEND_STRING("Diane..6449");
+                return false;
            }
            return true;
    }
