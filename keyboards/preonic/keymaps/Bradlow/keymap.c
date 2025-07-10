@@ -93,7 +93,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  ====================================================== SPACE_FN =======================================================
  ---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------
 |         |         |         |         |         |         |         |         |         |         |         |         |
-|   INS   |    F1   |    F2   |    F3   |    F4   |    F5   |   F6    |   F7    |   F8    |   F9    |   F10   |   BKSP  |
+|   INS   |         |         |         |         |         |         |         |         |         |         |   BKSP  |
 |         |         |         |         |         |         |         |         |         |         |         |         |
 |---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------|
 |         |         |         |         |         |         |         |         |         |         |         |         |
@@ -105,53 +105,53 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 |         |         |         |         |         |         |         |         |         |         |         |         |
 |---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------|
 |         |         |         |         |         |         |         |         |         |         |         |         |
-|   CAPS  |         |         |         |    \    |    [    |    ]    |    /    |    ,    |    .    |   UP    |  ENTER  |
+|   CAPS  |         |         |         |    \    |    [    |    ]    |    /    |    ,    |    .    |  PG UP  |  ENTER  |
 |  SHIFT  |         |         |         |         |         |         |         |         |         |         |  SHIFT  |
 |---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------|
 |         |         |         |         |         |                   |         |         |         |         |         |
-| ENCODER |         |   CTRL  |   ALT   |    -    |      SPACE_FN     |    =    |   GUI   |   LEFT  |   DN    |  RIGHT  |
+| ENCODER |         |   CTRL  |   ALT   |    -    |      SPACE_FN     |    =    |   GUI   |   HOME  |  PG DN  |   END   |
 |         |         |         |         |         |                   |         |         |         |         |         |
  ---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------
 */
  [_SPACE_FN] = LAYOUT_preonic_grid(
-  KC_INS,    KC_F1,    KC_F2,    KC_F3,    KC_F4,    KC_F5,    KC_F6,    KC_F7,    KC_F8,    KC_F9,   KC_F10,   _______,
+  KC_INS,   XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX   _______,
   _______,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  _______,
   _______,   KC_1,     KC_2,     KC_3,     KC_4,     KC_5,     KC_6,     KC_7,     KC_8,     KC_9,     KC_0,    _______,
-  _______,  XXXXXXX,  XXXXXXX,  XXXXXXX,  KC_BSLS,  KC_LBRC,  KC_RBRC,  KC_SLSH,  _______,  _______,  _______,  _______,
-  _______,  XXXXXXX,  _______,  _______,  KC_MINS,       _______,       _______,  _______,  _______,  _______,  _______
+  _______,  XXXXXXX,  XXXXXXX,  XXXXXXX,  KC_BSLS,  KC_LBRC,  KC_RBRC,  KC_SLSH,  _______,  _______,  KC_PGUP,  _______,
+  _______,  XXXXXXX,  _______,  _______,  KC_MINS,       _______,       _______,  _______,  KC_HOME,  KC_PGDN,  KC_END,
  ),
 
 /*
  ========================================================= NAV =========================================================
  ---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------
 |         |         |         |         |         |         |         |         |         |         |         |         |
-|         |         |         |         |         |         |         |         |         |         |         |   BKSP  |
+|         |         |         |         |         |         |         |         |         |         |         |         |
 |         |         |         |         |         |         |         |         |         |         |         |         |
 |---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------|
 |         |         |         |         |         |         |         |         |         |         |         |         |
-|   TAB   |         |  PG UP  |         |         |         |         |         |         |    UP   |         |   DEL   |
+|         |         |         |         |         |         |         |         |         |         |         |         |
 |         |         |         |         |         |         |         |         |         |         |         |         |
 |---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------|
 |         |         |         |         |         |         |         |         |         |         |         |         |
-|   ESC   |   HOME  |  PG DN  |   END   |         |         |         |         |    LT   |    DN   |   RT    |         |
-|  CNTRL  |         |         |         |         |         |         |         |         |         |         |         |
+|         |         |         |         |         |         |         |         |         |         |         |         |
+|         |         |         |         |         |         |         |         |         |         |         |         |
 |---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------|
 |         |         |         |         |         |         |         |         |         |         |         |         |
-|   CAPS  |         |         |         |         |         |         |         |         |         |         |  ENTER  |
-|  SHIFT  |         |         |         |         |         |         |         |         |         |         |  SHIFT  |
+|         |         |         |         |         |         |         |         |         |         |         |         |
+|         |         |         |         |         |         |         |         |         |         |         |         |
 |---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------|
 |         |         |         |         |         |                   |         |         |         |         |         |
-|         |  CTRL   |   ALT   |   GUI   |         |                   |         |  CTRL   |   ALT   |   GUI   |         |
+|         |         |         |         |         |                   |         |         |         |         |         |
 |         |         |         |         |         |                   |   NAV   |         |         |         |         |
  ---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------
 */
 /*
  [_NAV] = LAYOUT_preonic_grid(
-  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  _______,
-  KC_TAB,   XXXXXXX,  KC_PGUP,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,   KC_UP,   XXXXXXX,  _______,
-  _______,  KC_HOME,  KC_PGDN,  KC_END,   XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  KC_LEFT,  KC_DOWN,  KC_RGHT,  XXXXXXX,
-  _______,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  _______,
-  XXXXXXX,  KC_LCTL,  KC_LALT,  KC_LGUI,  XXXXXXX,       _______,         NAV,    KC_LCTL,  KC_LALT,  KC_LGUI,  XXXXXXX
+  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,
+  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,
+  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,
+  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,
+  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,       XXXXXXX,         NAV,    XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX
  ),
 */
 /*

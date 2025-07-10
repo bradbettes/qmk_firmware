@@ -88,7 +88,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  ====================================================== SPACE_FN =======================================================
  ---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------
 |         |         |         |         |         |         |         |         |         |         |         |         |
-|   TAB   |    F1   |    F2   |    F3   |    F4   |    F5   |   F6    |   F7    |   F8    |   F9    |   F10   |   BKSP  |
+|   TAB   |         |         |         |         |         |         |         |         |         |         |   BKSP  |
 |         |         |         |         |         |         |         |         |         |         |         |         |
 |---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------|
 |         |         |         |         |         |         |         |         |         |         |         |         |
@@ -96,30 +96,30 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 |         |         |         |         |         |         |         |         |         |         |         |         |
 |---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------|
 |         |         |         |         |         |         |         |         |         |         |         |         |
-|   CAPS  |         |         |         |    \    |    [    |    ]    |    /    |    ,    |    .    |   UP    |  ENTER  |
+|   CAPS  |         |         |         |    \    |    [    |    ]    |    /    |    ,    |    .    |  PG UP  |  ENTER  |
 |  SHIFT  |         |         |         |         |         |         |         |         |         |         |  SHIFT  |
 |---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------|
 |         |         |         |         |         |                   |         |         |         |         |         |
-| ENCODER |  CTRL   |   ALT   |   GUI   |    -    |      SPACE_FN     |    =    |   CTRL  |   ALT   |   GUI   |         |
+| ENCODER |         |   CTRL  |   ALT   |    -    |      SPACE_FN     |    =    |   GUI   |   HOME  |  PG DN  |   END   |
 |         |         |         |         |         |                   |         |         |         |         |         |
  ---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------
 */
  [_SPACE_FN] = LAYOUT_planck_mit(
-  _______,   KC_F1,    KC_F2,    KC_F3,    KC_F4,    KC_F5,    KC_F6,    KC_F7,    KC_F8,    KC_F9,   KC_F10,   _______,
+  _______,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX   _______,
   KC_GRV,    KC_1,     KC_2,     KC_3,     KC_4,     KC_5,     KC_6,     KC_7,     KC_8,     KC_9,     KC_0,    KC_QUOT,
-  _______,  XXXXXXX,  XXXXXXX,  XXXXXXX,  KC_BSLS,  KC_LBRC,  KC_RBRC,  KC_SLSH,  _______,  _______,  _______,  _______,
-  _______,  XXXXXXX,  _______,  _______,  KC_MINS,       _______,       _______,  _______,  _______,  _______,  _______
+  _______,  XXXXXXX,  XXXXXXX,  XXXXXXX,  KC_BSLS,  KC_LBRC,  KC_RBRC,  KC_SLSH,  _______,  _______,  KC_PGUP,  _______,
+  _______,  XXXXXXX,  _______,  _______,  KC_MINS,       _______,       _______,  _______,  KC_HOME,  KC_PGDN,  KC_END,
  ),
 
 /*
  ========================================================= NAV =========================================================
  ---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------
 |         |         |         |         |         |         |         |         |         |         |         |         |
-|   TAB   |         |  PG UP  |         |         |         |         |         |         |    UP   |         |   BKSP  |
+|         |         |         |         |         |         |         |         |         |         |         |         |
 |         |         |         |         |         |         |         |         |         |         |         |         |
 |---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------|
 |         |         |         |         |         |         |         |         |         |         |         |         |
-|   ESC   |   HOME  |  PG DN  |   END   |         |         |         |         |    LT   |    DN   |   RT    |   DEL   |
+|         |         |         |         |         |         |         |         |         |         |         |         |
 |         |         |         |         |         |         |         |         |         |         |         |         |
 |---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------|
 |         |         |         |         |         |         |         |         |         |         |         |         |
@@ -133,10 +133,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 */
 /*
  [_NAV] = LAYOUT_planck_mit(
-  _______,  XXXXXXX,  KC_PGUP,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,   KC_UP,   XXXXXXX,  _______,
-  KC_ESC,   KC_HOME,  KC_PGDN,  KC_END,   XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  KC_LEFT,  KC_DOWN,  KC_RGHT,  KC_DEL,
   XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,
-  XXXXXXX,  KC_LCTL,  KC_LALT,  KC_LGUI,  XXXXXXX,       XXXXXXX,         NAV,    KC_LCTL,  KC_LALT,  KC_LGUI,  XXXXXXX
+  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,
+  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,
+  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,       XXXXXXX,         NAV,    XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX
  ),
 */
 /*
