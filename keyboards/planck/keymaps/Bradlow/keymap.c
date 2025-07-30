@@ -189,8 +189,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  [_FN] = LAYOUT_planck_mit(
   KC_SLEP,   KC_F1,    KC_F2,    KC_F3,    KC_F4,    KC_F5,    KC_F6,    KC_F7,    KC_F8,    KC_F9,    KC_F10,  QK_BOOT,
   KC_WAKE,   KC_F11,   KC_F12,   KC_F13,   KC_F14,   KC_F15,   KC_F16,   KC_F17,   KC_F18,   KC_F19,   KC_F20,  DB_TOGG,
-  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,
-  XXXXXXX,    FN,     XXXXXXX,  XXXXXXX,  XXXXXXX,       XXXXXXX,       XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX
+  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  RGB_VAI,  XXXXXXX,
+  XXXXXXX,    FN,     XXXXXXX,  XXXXXXX,  XXXXXXX,       XXXXXXX,       XXXXXXX,  XXXXXXX,  XXXXXXX,  RGB_VAD,  XXXXXXX
  )
 };
 
@@ -282,19 +282,19 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 layer_state_t layer_state_set_user(layer_state_t state) {
     switch (get_highest_layer(state)) {
     case _SPACE_FN:
-        rgblight_setrgb (RGB_GREEN);
+        rgblight_sethsv (85, 255, rgblight_get_val()); //RGB_GREEN
         break;
 //    case _NAV:
-//        rgblight_setrgb (RGB_MAGENTA);
+//        rgblight_sethsv (213, 255, rgblight_get_val()); //RGB_MAGENTA
 //       break;
     case _MOUSE:
-        rgblight_setrgb (RGB_ORANGE);
+        rgblight_sethsv (21, 255, rgblight_get_val()); //RGB_ORANGE
         break;
     case _FN:
-        rgblight_setrgb (RGB_RED);
+        rgblight_sethsv (0, 255, rgblight_get_val()); //RGB_RED
         break;
     default: //  for any other layers, or the default layer
-        rgblight_setrgb (RGB_BLUE);
+        rgblight_sethsv (170, 255, rgblight_get_val()); //RGB_BLUE
         break;
     }
   return state;
