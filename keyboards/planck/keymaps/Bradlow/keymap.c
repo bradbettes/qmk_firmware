@@ -19,15 +19,11 @@
 enum planck_layers {
    _QWERTY,
    _SPACE_FN,
-   _NAV,
-   _MOUSE,
    _FN
  };
 
 #define SPACE_FN LT(_SPACE_FN, KC_SPC)
 #define FN       MO(_FN)
-#define NAV      LT(_NAV, KC_EQL)
-#define MOUSE    LT(_MOUSE, KC_MINS)
 
 #define ST_CAPS (SFT_T(KC_CAPS))
 #define ST_ENT  (SFT_T(KC_ENT))
@@ -44,8 +40,9 @@ enum planck_layers {
 //#define CTL_DEL (CTL_T(KC_DEL))
 
 #define BETTES  LT(0,KC_Q)
-#define D_6841  LT(0,KC_W)
+#define D_2020  LT(0,KC_W)
 #define D_6449  LT(0,KC_E)
+#define D_6841  LT(0,KC_R)
 
 // Defines modified shifted state of Up button to ?
 const key_override_t shift_up_question = ko_make_basic(MOD_MASK_SHIFT, KC_UP, KC_QUES);
@@ -62,7 +59,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  ---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------
 |         |         |         |         |         |         |         |         |         |         |         |         |
 |   TAB   |    Q    |    W    |    E    |    R    |    T    |    Y    |    U    |    I    |    O    |    P    |   BKSP  |
-|         |bettebrp |  D6841  |  D6449  |         |         |         |         |         |         |         |         |
+|         |bettebrp |  D2020  |  D6449  |  D6841  |         |         |         |         |         |         |         |
 |---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------|
 |         |         |         |         |         |         |         |         |         |         |         |         |
 |   ESC   |    A    |    S    |    D    |    F    |    G    |    H    |    J    |    K    |    L    |    ;    |   DEL   |
@@ -74,14 +71,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 |---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------|
 | VOL U/D |         |         |         |         |                   |         |         |         |         |         |
 | ENCODER |    FN   |   CTRL  |   ALT   |    -    |      SPACE_FN     |    =    |   GUI   |   LEFT  |   DN    |  RIGHT  |
-| FN_MUTE |         |         |         |  MOUSE  |                   |         |         |         |         |         |
+| FN_MUTE |         |         |         |         |                   |         |         |         |         |         |
  ---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------
 */
  [_QWERTY] = LAYOUT_planck_mit(
-  KC_TAB,   BETTES,   D_6841,   D_6449,    KC_R,     KC_T,      KC_Y,     KC_U,    KC_I,     KC_O,     KC_P,     KC_BSPC,
+  KC_TAB,   BETTES,   D_2020,   D_6449,   D_6841,    KC_T,      KC_Y,     KC_U,    KC_I,     KC_O,     KC_P,     KC_BSPC,
   KC_ESC,   CNTL_A,   CNTL_S,    KC_D,     KC_F,     KC_G,      KC_H,     KC_J,    KC_K,     KC_L,     KC_SCLN,  KC_DEL,
   ST_CAPS,  CNTL_Z,   CNTL_X,   CNTL_C,   CNTL_V,    KC_B,      KC_N,     KC_M,   KC_COMM,   KC_DOT,   KC_UP,    ST_ENT,
-  KC_MUTE,    FN,     KC_LCTL,  KC_LALT,   MOUSE,       SPACE_FN,        KC_EQL,  KC_LGUI,   KC_LEFT,  KC_DOWN,  KC_RGHT
+  KC_MUTE,    FN,     KC_LCTL,  KC_LALT,  KC_MINS,       SPACE_FN,       KC_EQL,  KC_LGUI,   KC_LEFT,  KC_DOWN,  KC_RGHT
  ),
 
 /*
@@ -112,61 +109,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  ),
 
 /*
- ========================================================= NAV =========================================================
- ---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------
-|         |         |         |         |         |         |         |         |         |         |         |         |
-|         |         |         |         |         |         |         |         |         |         |         |         |
-|         |         |         |         |         |         |         |         |         |         |         |         |
-|---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------|
-|         |         |         |         |         |         |         |         |         |         |         |         |
-|         |         |         |         |         |         |         |         |         |         |         |         |
-|         |         |         |         |         |         |         |         |         |         |         |         |
-|---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------|
-|         |         |         |         |         |         |         |         |         |         |         |         |
-|         |         |         |         |         |         |         |         |         |         |         |         |
-|         |         |         |         |         |         |         |         |         |         |         |         |
-|---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------|
-|         |         |         |         |         |                   |         |         |         |         |         |
-|         |         |         |         |         |                   |         |         |         |         |         |
-|         |         |         |         |         |                   |   NAV   |         |         |         |         |
- ---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------
-*/
-/*
- [_NAV] = LAYOUT_planck_mit(
-  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,
-  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,
-  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,
-  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,       XXXXXXX,         NAV,    XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX
- ),
-*/
-/*
- ======================================================== MOUSE ========================================================
- ---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------
-|         |         |         |         |         |         |         |         |         |         |         |         |
-|         |  RT_CK  |  MS_UP  |  LT_CK  |         |         |         |         |         |         |         |         |
-|         |         |         |         |         |         |         |         |         |         |         |         |
-|---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------|
-|         |         |         |         |         |         |         |         |         |         |         |         |
-|         |  MS_LT  |  MS_DN  |  MS_RT  |         |         |         |         |         |         |         |         |
-|         |         |         |         |         |         |         |         |         |         |         |         |
-|---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------|
-|         |         |         |         |         |         |         |         |         |         |         |         |
-|         |         |         |         |         |         |         |         |         |         |  SC_UP  |         |
-|         |         |         |         |         |         |         |         |         |         |         |         |
-|---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------|
-|         |         |         |         |         |                   |         |         |         |         |         |
-|         |         |         |         |  MOUSE  |                   |         |         |  SC_LT  |  SC_DN  |  SC_RT  |
-|         |         |         |         |         |                   |         |         |         |         |         |
- ---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------
-*/
- [_MOUSE] = LAYOUT_planck_mit(
-  XXXXXXX,  MS_BTN2,   MS_UP,   MS_BTN1,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,
-  XXXXXXX,  MS_LEFT,  MS_DOWN,  MS_RGHT,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,
-  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  MS_WHLU,  XXXXXXX,
-  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,   MOUSE,        XXXXXXX,       XXXXXXX,  XXXXXXX,  MS_WHLL,  MS_WHLD,  MS_WHLR
- ),
-
-/*
  ========================================================= FN ==========================================================
  ---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------
 |         |         |         |         |         |         |         |         |         |         |         |         |
@@ -182,7 +124,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 |         |         |         |         |         |         |         |         |         |         |         |         |
 |---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------|
 |         |         |         |         |         |                   |         |         |         |         |         |
-|         |         |         |         |         |                   |         |         |         |         |    FN   |
+|         |    FN   |         |         |         |                   |         |         |         |         |         |
 |         |         |         |         |         |                   |         |         |         |         |         |
  ---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------
 */
@@ -210,9 +152,11 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
             return TAPPING_TERM + 200;
         case BETTES:
             return TAPPING_TERM + 200;
-        case D_6841:
+        case D_2020:
             return TAPPING_TERM + 200;
         case D_6449:
+            return TAPPING_TERM + 200;
+        case D_6841:
             return TAPPING_TERM + 200;
         default:
             return TAPPING_TERM;
@@ -265,13 +209,19 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
            return true;
         case LT(0,KC_W):
            if (!record->tap.count && record->event.pressed) {
-                SEND_STRING("Diane..6841");
+                SEND_STRING("Diane..2020");
                 return false;
            }
            return true;
         case LT(0,KC_E):
            if (!record->tap.count && record->event.pressed) {
                 SEND_STRING("Diane..6449");
+                return false;
+           }
+           return true;
+        case LT(0,KC_R):
+           if (!record->tap.count && record->event.pressed) {
+                SEND_STRING("Diane..6841");
                 return false;
            }
            return true;
@@ -287,9 +237,9 @@ layer_state_t layer_state_set_user(layer_state_t state) {
 //    case _NAV:
 //        rgblight_sethsv (213, 255, rgblight_get_val()); //RGB_MAGENTA
 //       break;
-    case _MOUSE:
-        rgblight_sethsv (21, 255, rgblight_get_val()); //RGB_ORANGE
-        break;
+//    case _MOUSE:
+//        rgblight_sethsv (21, 255, rgblight_get_val()); //RGB_ORANGE
+//        break;
     case _FN:
         rgblight_sethsv (0, 255, rgblight_get_val()); //RGB_RED
         break;

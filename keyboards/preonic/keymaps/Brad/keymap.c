@@ -20,15 +20,11 @@
 enum preonic_layers {
    _QWERTY,
    _SPACE_FN,
-   _NAV,
-   _MOUSE,
    _FN
  };
 
 #define SPACE_FN LT(_SPACE_FN, KC_SPC)
 #define FN       MO(_FN)
-#define NAV      LT(_NAV, KC_EQL)
-#define MOUSE    LT(_MOUSE, KC_MINS)
 
 #define ST_CAPS (SFT_T(KC_CAPS))
 #define ST_ENT (SFT_T(KC_ENT))
@@ -41,11 +37,21 @@ enum preonic_layers {
 #define CNTL_Z  LT(0,KC_Z)
 
 #define CTL_ESC (CTL_T(KC_ESC))
-#define CTL_QT (CTL_T(KC_QUOT))
+#define CTL_GRV (CTL_T(KC_GRV))
+#define CTL_QT  (CTL_T(KC_QUOT))
 
-#define CTL_RWD (CTL_T(KC_MRWD))
-#define ALT_PL  (ALT_T(KC_MPLY))
-#define GUI_FF  (CTL_T(KC_MFFD))
+#define BETTES  LT(0,KC_1)
+#define D_2020  LT(0,KC_2)
+#define D_6449  LT(0,KC_3)
+#define D_6841  LT(0,KC_4)
+
+// Defines modified shifted state of Up button to ?
+const key_override_t shift_up_question = ko_make_basic(MOD_MASK_SHIFT, KC_UP, KC_QUES);
+
+// This globally defines all key overrides to be used
+const key_override_t *key_overrides[] = {
+	&shift_up_question
+};
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
@@ -53,34 +59,31 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  ======================================================= QWERTY ========================================================
  ---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------
 |         |         |         |         |         |         |         |         |         |         |         |         |
-|    `    |    1    |    2    |    3    |    4    |    5    |    6    |    7    |    8    |    9    |    0    |   BKSP  |
-|         |         |         |         |         |         |         |         |         |         |         |         |
+|   ESC   |    1    |    2    |    3    |    4    |    5    |    6    |    7    |    8    |    9    |    0    |   BKSP  |
+|         |bettebrp |  D2020  |  D6449  |  D6841  |         |         |         |         |         |         |         |
 |---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------|
 |         |         |         |         |         |         |         |         |         |         |         |         |
 |   TAB   |    Q    |    W    |    E    |    R    |    T    |    Y    |    U    |    I    |    O    |    P    |   DEL   |
 |         |         |         |         |         |         |         |         |         |         |         |         |
 |---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------|
-|         |         |         |         |         |         |         |         |         |         |         |         |
-|   ESC   |    A    |    S    |    D    |    F    |    G    |    H    |    J    |    K    |    L    |    ;    |    '    |
+|    ~    |         |         |         |         |         |         |         |         |         |         |    "    |
+|    `    |    A    |    S    |    D    |    F    |    G    |    H    |    J    |    K    |    L    |    ;    |    '    |
 |  CNTRL  |         |         |         |         |         |         |         |         |         |         |  CNTRL  |
 |---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------|
 |         |         |         |         |         |         |         |         |         |         |         |         |
-|   CAPS  |    Z    |    X    |    C    |    V    |    B    |    N    |    M    |    ,    |    .    |    /    |  ENTER  |
+|   CAPS  |    Z    |    X    |    C    |    V    |    B    |    N    |    M    |    ,    |    .    |    UP   |  ENTER  |
 |  SHIFT  |         |         |         |         |         |         |         |         |         |         |  SHIFT  |
 |---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------|
 | VOL U/D |         |         |         |         |                   |         |         |         |         |         |
-| ENCODER |   CTRL  |   ALT   |   GUI   |    -    |      SPACE_FN     |    =    |   CTRL  |   ALT   |   GUI   |   FN    |
+| ENCODER |    FN   |   CTRL  |   ALT   |    -    |      SPACE_FN     |    =    |   GUI   |   LEFT  |    DN   |  RIGHT  |
 | FN_MUTE |         |         |         |         |                   |         |         |         |         |         |
  ---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------
 */
  [_QWERTY] = LAYOUT_preonic_grid(
-  KC_GRV,    KC_1,     KC_2,     KC_3,     KC_4,     KC_5,     KC_6,     KC_7,     KC_8,     KC_9,     KC_0,    KC_BSPC,
+  KC_ESC,   BETTES,   D_2020,   D_6449,   D_6841,    KC_5,     KC_6,     KC_7,     KC_8,     KC_9,     KC_0,    KC_BSPC,
   KC_TAB,    KC_Q,     KC_W,     KC_E,     KC_R,     KC_T,     KC_Y,     KC_U,     KC_I,     KC_O,     KC_P,    KC_DEL,
-<<<<<<< HEAD
   CTL_ESC,  CNTL_A,   CNTL_S,    KC_D,     KC_F,     KC_G,     KC_H,     KC_J,    KC_K,     KC_L,     KC_SCLN,  CTL_QT,
-=======
   KC_ESC,   CNTL_A,   CNTL_S,    KC_D,     KC_F,     KC_G,     KC_H,     KC_J,     KC_K,     KC_L,    KC_SCLN,  KC_QUOT,
->>>>>>> 90b5d5a974 (textual correction)
   ST_CAPS,  CNTL_Z,   CNTL_X,   CNTL_C,   CNTL_V,    KC_B,     KC_N,     KC_M,    KC_COMM,  KC_DOT,   KC_SLSH,  ST_ENT,
   KC_MUTE,  KC_LCTL,  KC_LALT,  KC_LGUI,  KC_MINS,      SPACE_FN,       KC_EQL,   KC_LCTL,  KC_LALT,  KC_LGUI,    FN
  ),
@@ -93,105 +96,39 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 |         |         |         |         |         |         |         |         |         |         |         |         |
 |---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------|
 |         |         |         |         |         |         |         |         |         |         |         |         |
-|   TAB   |         |         |  PG UP  |         |         |         |         |    UP   |         |         |   DEL   |
+|   TAB   |         |         |         |         |         |         |         |         |         |         |   DEL   |
 |         |         |         |         |         |         |         |         |         |         |         |         |
 |---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------|
 |         |         |         |         |         |         |         |         |         |         |         |         |
-|   ESC   |         |   HOME  |  PG DN  |   END   |         |         |    LT   |    DN   |   RT    |         |    '    |
+|   ESC   |    1    |    2    |    3    |    4    |    5    |    6    |    7    |    8    |    9    |    0    |    '    |
 |  CNTRL  |         |         |         |         |         |         |         |         |         |         |  CNTRL  |
 |---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------|
 |         |         |         |         |         |         |         |         |         |         |         |         |
-|   CAPS  |         |         |         |    {    |    [    |    ]    |    }    |    ,    |    .    |    \    |  ENTER  |
+|   CAPS  |         |         |         |    \    |    [    |    ]    |    /    |    ,    |    .    |    \    |  ENTER  |
 |  SHIFT  |         |         |         |         |         |         |         |         |         |         |  SHIFT  |
 |---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------|
 |         |         |         |         |         |                   |         |         |         |         |         |
-| ENCODER |  CTRL   |   ALT   |   GUI   |    -    |      SPACE_FN     |    =    |   CTRL  |   ALT   |   GUI   |         |
+| ENCODER |         |   CTRL  |   ALT   |    -    |      SPACE_FN     |    =    |   GUI   |   HOME  |  PG DN  |   END   |
 |         |         |         |         |         |                   |         |         |         |         |         |
  ---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------
 */
  [_SPACE_FN] = LAYOUT_preonic_grid(
   KC_INS,    KC_F1,    KC_F2,    KC_F3,    KC_F4,    KC_F5,    KC_F6,    KC_F7,    KC_F8,    KC_F9,   KC_F10,   _______,
-  _______,  XXXXXXX,  XXXXXXX,  KC_PGUP,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,   KC_UP,   XXXXXXX,  XXXXXXX,  _______,
-  _______,  XXXXXXX,  KC_HOME,  KC_PGDN,  KC_END,   XXXXXXX,  XXXXXXX,  KC_LEFT,  KC_DOWN,  KC_RGHT,  XXXXXXX,  _______,
-  _______,  XXXXXXX,  XXXXXXX,  XXXXXXX,  KC_LCBR,  KC_LBRC,  KC_RBRC,  KC_RCBR,  _______,  _______,  KC_BSLS,  _______,
-  _______,  _______,  _______,  _______,  _______,       _______,       _______,  _______,  _______,  _______,  XXXXXXX
+  _______,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  _______,
+  _______,   KC_1,     KC_2,     KC_3,     KC_4,     KC_5,     KC_6,     KC_7,     KC_8,     KC_9,     KC_0,    _______,
+  _______,  XXXXXXX,  XXXXXXX,  XXXXXXX,  KC_BSLS,  KC_LBRC,  KC_RBRC,  KC_SLSH,  _______,  _______,  KC_PGUP,  _______,
+  _______,  XXXXXXX,  _______,  _______,  _______,       _______,       _______,  _______,  KC_HOME,  KC_PGDN,  KC_END
  ),
 
-/*
- ========================================================= NAV =========================================================
- ---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------
-|         |         |         |         |         |         |         |         |         |         |         |         |
-|         |         |         |         |         |         |         |         |         |         |         |   BKSP  |
-|         |         |         |         |         |         |         |         |         |         |         |         |
-|---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------|
-|         |         |         |         |         |         |         |         |         |         |         |         |
-|   TAB   |         |  PG UP  |         |         |         |         |         |         |    UP   |         |   DEL   |
-|         |         |         |         |         |         |         |         |         |         |         |         |
-|---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------|
-|         |         |         |         |         |         |         |         |         |         |         |         |
-|   ESC   |   HOME  |  PG DN  |   END   |         |         |         |         |    LT   |    DN   |   RT    |         |
-|  CNTRL  |         |         |         |         |         |         |         |         |         |         |         |
-|---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------|
-|         |         |         |         |         |         |         |         |         |         |         |         |
-|   CAPS  |         |         |         |         |         |         |         |         |         |         |  ENTER  |
-|  SHIFT  |         |         |         |         |         |         |         |         |         |         |  SHIFT  |
-|---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------|
-|         |         |         |         |         |                   |         |         |         |         |         |
-|         |  CTRL   |   ALT   |   GUI   |         |                   |         |  CTRL   |   ALT   |   GUI   |         |
-|         |         |         |         |         |                   |   NAV   |         |         |         |         |
- ---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------
-*/
-/*
- [_NAV] = LAYOUT_preonic_grid(
-  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  _______,
-  KC_TAB,   XXXXXXX,  KC_PGUP,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,   KC_UP,   XXXXXXX,  _______,
-  _______,  KC_HOME,  KC_PGDN,  KC_END,   XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  KC_LEFT,  KC_DOWN,  KC_RGHT,  XXXXXXX,
-  _______,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  _______,
-  XXXXXXX,  KC_LCTL,  KC_LALT,  KC_LGUI,  XXXXXXX,       _______,         NAV,    KC_LCTL,  KC_LALT,  KC_LGUI,  XXXXXXX
- ),
-*/
-/*
- ======================================================== MOUSE ========================================================
- ---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------
-|         |         |         |         |         |         |         |         |         |         |         |         |
-|         |         |         |         |         |         |         |         |         |         |         |         |
-|         |         |         |         |         |         |         |         |         |         |         |         |
-|---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------|
-|         |         |         |         |         |         |         |         |         |         |         |         |
-|         |         |  SC_UP  |         |         |         |         |         |  LT_CK  |  MS_UP  |  RT_CK  |         |
-|         |         |         |         |         |         |         |         |         |         |         |         |
-|---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------|
-|         |         |         |         |         |         |         |         |         |         |         |         |
-|         |  SC_LT  |  SC_DN  |  SC_RT  |         |         |         |         |  MS_LT  |  MS_DN  |  MS_RT  |         |
-|         |         |         |         |         |         |         |         |         |         |         |         |
-|---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------|
-|         |         |         |         |         |         |         |         |         |         |         |         |
-|   CAPS  |         |         |         |         |         |         |         |         |         |         |  ENTER  |
-|  SHIFT  |         |         |         |         |         |         |         |         |         |         |  SHIFT  |
-|---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------|
-|         |         |         |         |         |                   |         |         |         |         |         |
-|         |  CTRL   |   ALT   |   GUI   |         |                   |         |  CTRL   |   ALT   |   GUI   |         |
-|         |         |         |         |  MOUSE  |                   |         |         |         |         |         |
- ---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------
-*/
-/*
- [_MOUSE] = LAYOUT_preonic_grid(
-  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,
-  XXXXXXX,  XXXXXXX,  MS_WHLU,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  MS_BTN1,   MS_UP,   MS_BTN2,  XXXXXXX,
-  XXXXXXX,  MS_WHLL,  MS_WHLD,  MS_WHLR,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  MS_LEFT,  MS_DOWN,  MS_RGHT,  XXXXXXX,
-  _______,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  _______,
-  XXXXXXX,  KC_LCTL,  KC_LALT,  KC_LGUI,   MOUSE,        XXXXXXX,       XXXXXXX,  KC_LCTL,  KC_LALT,  KC_LGUI,  XXXXXXX
- ),
-*/
 /*
  ========================================================= FN ==========================================================
  ---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------
 |         |         |         |         |         |         |         |         |         |         |         |         |
-|  RESET  |         |         |         |         |         |         |         |         |         |         |  SLEEP  |
+|  SLEEP  |         |         |         |         |         |         |         |         |         |         |  RESET  |
 |         |         |         |         |         |         |         |         |         |         |         |         |
 |---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------|
 |         |         |         |         |         |         |         |         |         |         |         |         |
-|  DEBUG  |         |         |         |         |         |         |         |         |         |         |  WAKE   |
+|  WAKE   |         |         |         |         |         |         |         |         |         |         |  DEBUG  |
 |         |         |         |         |         |         |         |         |         |         |         |         |
 |---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------|
 |         |         |         |         |         |         |         |         |         |         |         |         |
@@ -203,16 +140,16 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 |         |         |         |         |         |         |         |         |         |         |         |         |
 |---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------|
 |         |         |         |         |         |                   |         |         |         |         |         |
-|         |         |         |         |         |                   |         |         |         |         |   FN    |
+|         |    FN   |         |         |         |                   |         |         |         |         |         |
 |         |         |         |         |         |                   |         |         |         |         |         |
  ---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------
 */
  [_FN] = LAYOUT_preonic_grid(
-  QK_BOOT,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  KC_SLEP,
-  DB_TOGG,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  KC_WAKE,
+  KC_SLEP,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  QK_BOOT,
+  KC_WAKE,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  DB_TOGG,
   XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,
-  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,
-  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,       XXXXXXX,       XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,    FN
+  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  RGB_VAI,  XXXXXXX,
+  XXXXXXX,    FN,     XXXXXXX,  XXXXXXX,  XXXXXXX,       XXXXXXX,       XXXXXXX,  XXXXXXX,  XXXXXXX,  RGB_VAD,  XXXXXXX
  )
 
 };
@@ -229,6 +166,14 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
         case CNTL_S:
             return TAPPING_TERM + 200;
         case CNTL_Z:
+            return TAPPING_TERM + 200;
+        case BETTES:
+            return TAPPING_TERM + 200;
+        case D_2020:
+            return TAPPING_TERM + 200;
+        case D_6449:
+            return TAPPING_TERM + 200;
+        case D_6841:
             return TAPPING_TERM + 200;
         default:
             return TAPPING_TERM;
@@ -273,6 +218,30 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                return false;
            }
            return true;
+        case LT(0,KC_Q):
+           if (!record->tap.count && record->event.pressed) {
+                SEND_STRING("bettebrp");
+                return false;
+           }
+           return true;
+        case LT(0,KC_W):
+           if (!record->tap.count && record->event.pressed) {
+                SEND_STRING("Diane..2020");
+                return false;
+           }
+           return true;
+        case LT(0,KC_E):
+           if (!record->tap.count && record->event.pressed) {
+                SEND_STRING("Diane..6449");
+                return false;
+           }
+           return true;
+        case LT(0,KC_R):
+           if (!record->tap.count && record->event.pressed) {
+                SEND_STRING("Diane..6841");
+                return false;
+           }
+           return true;
    }
    return true;
 }
@@ -280,19 +249,19 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 layer_state_t layer_state_set_user(layer_state_t state) {
     switch (get_highest_layer(state)) {
     case _SPACE_FN:
-        rgblight_setrgb (RGB_GREEN);
+        rgblight_sethsv (85, 255, rgblight_get_val()); //RGB_GREEN
         break;
 //    case _NAV:
-//        rgblight_setrgb (RGB_MAGENTA);
-//        break;
+//        rgblight_sethsv (213, 255, rgblight_get_val()); //RGB_MAGENTA
+//       break;
 //    case _MOUSE:
-//        rgblight_setrgb (RGB_ORANGE);
+//        rgblight_sethsv (21, 255, rgblight_get_val()); //RGB_ORANGE
 //        break;
     case _FN:
-        rgblight_setrgb (RGB_RED);
+        rgblight_sethsv (0, 255, rgblight_get_val()); //RGB_RED
         break;
     default: //  for any other layers, or the default layer
-        rgblight_setrgb (RGB_BLUE);
+        rgblight_sethsv (170, 255, rgblight_get_val()); //RGB_BLUE
         break;
     }
   return state;
