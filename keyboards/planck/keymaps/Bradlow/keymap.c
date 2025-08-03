@@ -44,8 +44,9 @@ enum planck_layers {
 //#define CTL_DEL (CTL_T(KC_DEL))
 
 #define BETTES  LT(0,KC_Q)
-#define D_6841  LT(0,KC_W)
+#define D_2020  LT(0,KC_W)
 #define D_6449  LT(0,KC_E)
+#define D_6841  LT(0,KC_R)
 
 // Defines modified shifted state of Up button to ?
 const key_override_t shift_up_question = ko_make_basic(MOD_MASK_SHIFT, KC_UP, KC_QUES);
@@ -62,7 +63,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  ---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------
 |         |         |         |         |         |         |         |         |         |         |         |         |
 |   TAB   |    Q    |    W    |    E    |    R    |    T    |    Y    |    U    |    I    |    O    |    P    |   BKSP  |
-|         |bettebrp |  D6841  |  D6449  |         |         |         |         |         |         |         |         |
+|         |bettebrp |  D2020  |  D6449  |  D6841  |         |         |         |         |         |         |         |
 |---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------|
 |         |         |         |         |         |         |         |         |         |         |         |         |
 |   ESC   |    A    |    S    |    D    |    F    |    G    |    H    |    J    |    K    |    L    |    ;    |   DEL   |
@@ -78,7 +79,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  ---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------
 */
  [_QWERTY] = LAYOUT_planck_mit(
-  KC_TAB,   BETTES,   D_6841,   D_6449,    KC_R,     KC_T,      KC_Y,     KC_U,    KC_I,     KC_O,     KC_P,     KC_BSPC,
+  KC_TAB,   BETTES,   D_2020,   D_6449,   D_6841,    KC_T,      KC_Y,     KC_U,    KC_I,     KC_O,     KC_P,     KC_BSPC,
   KC_ESC,   CNTL_A,   CNTL_S,    KC_D,     KC_F,     KC_G,      KC_H,     KC_J,    KC_K,     KC_L,     KC_SCLN,  KC_DEL,
   ST_CAPS,  CNTL_Z,   CNTL_X,   CNTL_C,   CNTL_V,    KC_B,      KC_N,     KC_M,   KC_COMM,   KC_DOT,   KC_UP,    ST_ENT,
   KC_MUTE,    FN,     KC_LCTL,  KC_LALT,   MOUSE,       SPACE_FN,        KC_EQL,  KC_LGUI,   KC_LEFT,  KC_DOWN,  KC_RGHT
@@ -210,9 +211,11 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
             return TAPPING_TERM + 200;
         case BETTES:
             return TAPPING_TERM + 200;
-        case D_6841:
+        case D_2020:
             return TAPPING_TERM + 200;
         case D_6449:
+            return TAPPING_TERM + 200;
+        case D_6841:
             return TAPPING_TERM + 200;
         default:
             return TAPPING_TERM;
@@ -265,13 +268,19 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
            return true;
         case LT(0,KC_W):
            if (!record->tap.count && record->event.pressed) {
-                SEND_STRING("Diane..6841");
+                SEND_STRING("Diane..2020");
                 return false;
            }
            return true;
         case LT(0,KC_E):
            if (!record->tap.count && record->event.pressed) {
                 SEND_STRING("Diane..6449");
+                return false;
+           }
+           return true;
+        case LT(0,KC_R):
+           if (!record->tap.count && record->event.pressed) {
+                SEND_STRING("Diane..6841");
                 return false;
            }
            return true;
