@@ -218,25 +218,25 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                return false;
            }
            return true;
-        case LT(0,KC_Q):
+        case LT(0,KC_1):
            if (!record->tap.count && record->event.pressed) {
                 SEND_STRING("bettebrp");
                 return false;
            }
            return true;
-        case LT(0,KC_W):
+        case LT(0,KC_2):
            if (!record->tap.count && record->event.pressed) {
                 SEND_STRING("Diane..2020");
                 return false;
            }
            return true;
-        case LT(0,KC_E):
+        case LT(0,KC_3):
            if (!record->tap.count && record->event.pressed) {
                 SEND_STRING("Diane..6449");
                 return false;
            }
            return true;
-        case LT(0,KC_R):
+        case LT(0,KC_4):
            if (!record->tap.count && record->event.pressed) {
                 SEND_STRING("Diane..6841");
                 return false;
