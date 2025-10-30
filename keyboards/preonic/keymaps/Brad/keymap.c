@@ -82,9 +82,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  [_QWERTY] = LAYOUT_preonic_grid(
   KC_ESC,   BETTES,   D_2020,   D_6449,   D_6841,    KC_5,     KC_6,     KC_7,     KC_8,     KC_9,     KC_0,    KC_BSPC,
   KC_TAB,    KC_Q,     KC_W,     KC_E,     KC_R,     KC_T,     KC_Y,     KC_U,     KC_I,     KC_O,     KC_P,    KC_DEL,
-  CTL_GRV,  CNTL_A,   CNTL_S,    KC_D,     KC_F,     KC_G,     KC_H,     KC_J,     KC_K,     KC_L,    KC_SCLN,  CTL_QT,
-  ST_CAPS,  CNTL_Z,   CNTL_X,   CNTL_C,   CNTL_V,    KC_B,     KC_N,     KC_M,    KC_COMM,  KC_DOT,   KC_UP,    ST_ENT,
-  KC_MUTE,    FN,     KC_LCTL,  KC_LALT,  KC_MINS,      SPACE_FN,        KC_EQL,  KC_LGUI,  KC_LEFT,  KC_DOWN,  KC_RGHT
+  CTL_ESC,  CNTL_A,   CNTL_S,    KC_D,     KC_F,     KC_G,     KC_H,     KC_J,    KC_K,     KC_L,     KC_SCLN,  CTL_QT,
+  KC_ESC,   CNTL_A,   CNTL_S,    KC_D,     KC_F,     KC_G,     KC_H,     KC_J,     KC_K,     KC_L,    KC_SCLN,  KC_QUOT,
+  ST_CAPS,  CNTL_Z,   CNTL_X,   CNTL_C,   CNTL_V,    KC_B,     KC_N,     KC_M,    KC_COMM,  KC_DOT,   KC_SLSH,  ST_ENT,
+  KC_MUTE,  KC_LCTL,  KC_LALT,  KC_LGUI,  KC_MINS,      SPACE_FN,       KC_EQL,   KC_LCTL,  KC_LALT,  KC_LGUI,    FN
  ),
 
 /*

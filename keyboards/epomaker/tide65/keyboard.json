@@ -143,6 +143,7 @@
     },
     "usb": {
         "device_version": "0.0.1",
+        //"nkro": true,
         "pid": "0xE463",
         "suspend_wakeup_delay": 1000,
         "vid": "0x342D"
