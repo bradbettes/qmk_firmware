@@ -1,57 +1,58 @@
-// Place your settings in this file to overwrite default and user settings.
+// <repo>/.vscode/settings.json
 {
-    // Unofficially, QMK uses spaces for indentation
-    "editor.insertSpaces": true,
-    // Configure glob patterns for excluding files and folders.
-    "files.exclude": {
-        "**/.build": true,
-        "**/*.hex": true,
-        "**/*.bin": true,
-        "**/*.uf2": true
-    },
-    "files.associations": {
-        // QMK Filetypes
-        "keyboard.json": "jsonc",
-        "info.json": "jsonc",
-        "keymap.json": "jsonc",
-        "qmk.json": "jsonc",
-        "qmk_module.json": "jsonc",
-        // Standard filetypes
-        "*.h": "c",
-        "*.c": "c",
-        "*.inc": "c",
-        "*.cpp": "cpp",
-        "*.hpp": "cpp",
-        "xstddef": "c",
-        "type_traits": "c",
-        "utility": "c",
-        "ranges": "c"
-    },
-    "[markdown]": {
-        "editor.trimAutoWhitespace": false,
-        "files.trimTrailingWhitespace": false
-    },
-    "python.formatting.provider": "yapf",
-    "[json]": {
-        "editor.formatOnSave": false
-    },
-    "clangd.arguments": ["--header-insertion=never"],
-    "json.schemas": [
-        {
-            "fileMatch": ["qmk.json"],
-            "url": "./data/schemas/user_repo_v1_1.jsonschema"
-        },
-        {
-            "fileMatch": ["qmk_module.json"],
-            "url": "./data/schemas/community_module.jsonschema"
-        },
-        {
-            "fileMatch": ["keyboard.json", "info.json"],
-            "url": "./data/schemas/keyboard.jsonschema"
-        },
-        {
-            "fileMatch": ["keymap.json"],
-            "url": "./data/schemas/keymap.jsonschema"
-        }
-    ]
+  // QMK uses spaces
+  "editor.insertSpaces": true,
+
+  // Hide build artifacts
+  "files.exclude": {
+    "**/.build": true,
+    "**/*.hex": true,
+    "**/*.bin": true,
+    "**/*.uf2": true
+  },
+
+  // File associations helpful for QMK
+  "files.associations": {
+    // QMK JSONs
+    "keyboard.json": "jsonc",
+    "info.json": "jsonc",
+    "keymap.json": "jsonc",
+    "qmk.json": "jsonc",
+    "qmk_module.json": "jsonc",
+
+    // C/C++ basics
+    "*.h": "c",
+    "*.c": "c",
+    "*.inc": "c",
+    "*.cpp": "cpp",
+    "*.hpp": "cpp",
+
+    // Some headers in-tree that extensions sometimes mis-detect
+    "xstddef": "c",
+    "type_traits": "c",
+    "utility": "c",
+    "ranges": "c"
+  },
+
+  // Markdown & JSON niceties from QMK repo
+  "[markdown]": {
+    "editor.trimAutoWhitespace": false,
+    "files.trimTrailingWhitespace": false
+  },
+  "[json]": {
+    "editor.formatOnSave": false
+  },
+
+  // Project uses yapf for Python formatting
+  "python.formatting.provider": "yapf",
+
+  // JSON schemas for QMK metadata files
+  "json.schemas": [
+    { "fileMatch": ["qmk.json"], "url": "./data/schemas/user_repo_v1_1.jsonschema" },
+    { "fileMatch": ["qmk_module.json"], "url": "./data/schemas/community_module.jsonschema" },
+    { "fileMatch": ["keyboard.json", "info.json"], "url": "./data/schemas/keyboard.jsonschema" },
+    { "fileMatch": ["keymap.json"], "url": "./data/schemas/keymap.jsonschema" }
+  ]
+
+  // IMPORTANT: no clangd / cpptools runtime settings here — those live in your workspace.
 }
