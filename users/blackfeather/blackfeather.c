@@ -105,8 +105,8 @@ static bool bf_caps_on = false;
 
 // Color policy (tweak HSV to taste)
 #define BF_HSV_BASE  HSV_CYAN
-#define BF_HSV_FN    HSV_RED
-#define BF_HSV_CAPS  HSV_WHITE
+#define BF_HSV_FN    HSV_GREEN
+#define BF_HSV_CAPS  HSV_RED
 
 // Layer IDs (keymap can override by defining non-weak versions)
 __attribute__((weak)) uint8_t bf_get_base_layer(void) { return 0; }  // default layer 0
